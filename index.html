@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICEYE Mission Sales Process</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --iceye-teal: #00A19C;
+            --iceye-teal-dark: #007A76;
+            --iceye-teal-light: #00CCC5;
+            --accent-blue: #3B82F6;
+            --accent-purple: #8B5CF6;
+            --review-coral: #E63946;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1E293B;
+            --gray-900: #0F172A;
+            --success: #10B981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            min-height: 100vh;
+            color: var(--gray-800);
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 0% 0%, rgba(0, 161, 156, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 40px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 16px rgba(0, 161, 156, 0.3);
+        }
+
+        .iceye-logo {
+            height: 28px;
+            width: auto;
+        }
+
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--iceye-teal-dark) 0%, var(--iceye-teal) 50%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            color: var(--gray-500);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Phase Section */
+        .phase-section {
+            margin-bottom: 20px;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px 28px;
+            border: 1px solid var(--gray-200);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--iceye-teal), var(--iceye-teal-light));
+        }
+
+        .phase-section.sales-phase::before {
+            background: linear-gradient(90deg, var(--accent-blue), #60A5FA);
+        }
+
+        .phase-section.nego-phase::before {
+            background: linear-gradient(90deg, var(--accent-purple), #A78BFA);
+        }
+
+        /* Four-column layout */
+        .phase-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .phase-column {
+            display: flex;
+            flex-shrink: 0;
+        }
+
+        .phase-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(180deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
+            color: white;
+            padding: 20px 16px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 161, 156, 0.25);
+            width: 140px;
+            text-align: center;
+            height: 100%;
+        }
+
+        .phase-section.sales-phase .phase-badge {
+            background: linear-gradient(180deg, var(--accent-blue) 0%, #2563EB 100%);
+            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
+        }
+
+        .phase-section.nego-phase .phase-badge {
+            background: linear-gradient(180deg, var(--accent-purple) 0%, #7C3AED 100%);
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
+        }
+
+        .phase-badge-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .phase-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .phase-badge-title {
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+
+        .phase-badge-meta {
+            font-size: 10px;
+            font-weight: 500;
+            opacity: 0.85;
+            text-transform: none;
+            letter-spacing: 0;
+            line-height: 1.4;
+        }
+
+        .stages-column {
+            flex: 1;
+        }
+
+        .reviews-column {
+            width: 140px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .actions-column {
+            width: 260px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Column Headings */
+        .column-headings {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 12px;
+            padding: 0 28px;
+        }
+
+        .column-heading {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-500);
+        }
+
+        .column-heading.phase-heading {
+            width: 140px;
+            flex-shrink: 0;
+        }
+
+        .column-heading.stage-heading {
+            flex: 1;
+        }
+
+        .column-heading.reviews-heading {
+            width: 140px;
+            flex-shrink: 0;
+        }
+
+        .column-heading.actions-heading {
+            width: 260px;
+            flex-shrink: 0;
+        }
+
+        /* Stage Row */
+        .stage-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .stage {
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        .stage:hover {
+            transform: translateX(4px);
+        }
+
+        .stage-bar {
+            position: relative;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .stage-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .stage:hover .stage-bar {
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+            transform: scale(1.01);
+        }
+
+        /* Stage colors and widths - funnel effect */
+        .stage[data-maturity="0"] .stage-bar { 
+            width: 100%;
+            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
+            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+        }
+        .stage[data-maturity="10"] .stage-bar { 
+            width: 95%;
+            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
+            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+        }
+        .stage[data-maturity="15"] .stage-bar { 
+            width: 90%;
+            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
+            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+        }
+        .stage[data-maturity="30"] .stage-bar { 
+            width: 85%;
+            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
+            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+        }
+        .stage[data-maturity="40"] .stage-bar { 
+            width: 80%;
+            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
+        }
+        .stage[data-maturity="45"] .stage-bar { 
+            width: 75%;
+            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
+        }
+        .stage[data-maturity="60"] .stage-bar { 
+            width: 70%;
+            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
+        }
+        .stage[data-maturity="70"] .stage-bar { 
+            width: 65%;
+            background: linear-gradient(135deg, #7C3AED 0%, var(--accent-purple) 100%);
+            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
+        }
+        .stage[data-maturity="80"] .stage-bar { 
+            width: 60%;
+            background: linear-gradient(135deg, #7C3AED 0%, var(--accent-purple) 100%);
+            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
+        }
+        .stage[data-maturity="100"] .stage-bar { 
+            width: 55%;
+            background: linear-gradient(135deg, #059669 0%, var(--success) 100%);
+            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.25);
+        }
+
+        /* Down arrow between stages */
+        .stage-arrow {
+            text-align: left;
+            padding: 6px 0 6px 80px;
+            color: var(--gray-400);
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .maturity-badge {
+            position: absolute;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.22);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        /* Links column items */
+        .link-row {
+            min-height: 46px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .link-spacer {
+            min-height: 26px; /* matches arrow height (padding 6px * 2 + font 14px) */
+        }
+
+        .reviews-column .link-row {
+            align-items: flex-start;
+        }
+        
+        .actions-column .link-row {
+            align-items: flex-start;
+        }
+
+        .stage-action {
+            color: var(--gray-500);
+            font-size: 12px;
+            font-weight: 500;
+            white-space: normal;
+            line-height: 1.4;
+        }
+
+        .stage-action a {
+            color: var(--iceye-teal);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--iceye-teal);
+            transition: all 0.2s;
+        }
+
+        .stage-action a:hover {
+            color: var(--iceye-teal-dark);
+            border-bottom-style: solid;
+        }
+
+        /* Review Link */
+        .review-link {
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 46px;
+            padding: 0 16px;
+            border-radius: 10px;
+            background: #D97075;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(217, 112, 117, 0.25);
+        }
+
+        .review-link:hover {
+            background: #C45D62;
+            transform: scale(1.01);
+        }
+
+        .review-link::before {
+            content: "★";
+            font-size: 11px;
+            color: white;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 1000;
+        }
+
+        .popup-overlay.active {
+            display: block;
+        }
+
+        .popup {
+            position: fixed;
+            background: var(--white);
+            border-radius: 14px;
+            max-width: 456px;
+            width: max-content;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            animation: popupIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            z-index: 1001;
+        }
+
+        @keyframes popupIn {
+            from { opacity: 0; transform: scale(0.95) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .popup-header {
+            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
+            color: white;
+            padding: 14px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .popup-header.review-header {
+            background: linear-gradient(135deg, var(--review-coral) 0%, #C1121F 100%);
+        }
+
+        .popup-header h2 {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .popup-maturity {
+            background: rgba(255, 255, 255, 0.22);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .popup-close {
+            background: rgba(255, 255, 255, 0.18);
+            border: none;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.2s;
+            margin-left: 10px;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.28);
+        }
+
+        .popup-content {
+            padding: 16px;
+        }
+
+        .popup-content h3 {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--iceye-teal);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .criteria-item {
+            position: relative;
+            padding: 5px 0 5px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--gray-700);
+        }
+
+        .criteria-item:last-child {
+            border-bottom: none;
+        }
+
+        .criteria-item::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--iceye-teal);
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        /* Review popup content */
+        .review-detail {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .review-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .review-label {
+            width: 100px;
+            color: var(--gray-500);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .review-value {
+            color: var(--gray-700);
+        }
+
+        .review-value.highlight {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Classification Tags */
+        .classification-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .tag-baseline { 
+            background: var(--gray-200);
+            color: var(--gray-700);
+        }
+        .tag-delta-green { 
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        .tag-delta-red { 
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        /* Classification popup headers */
+        .popup.classification-popup .popup-header.baseline-header {
+            background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);
+        }
+        .popup.classification-popup .popup-header.delta-green-header {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        .popup.classification-popup .popup-header.delta-red-header {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1B 100%);
+        }
+
+        .popup.classification-popup .popup-content p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--gray-700);
+            margin-bottom: 10px;
+        }
+        .popup.classification-popup .popup-content .example {
+            font-size: 12px;
+            color: var(--gray-600);
+            font-style: italic;
+            background: var(--gray-50);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gray-300);
+        }
+
+        /* Classification Hover Tooltip */
+        .classification-tooltip {
+            position: fixed;
+            background: var(--white);
+            border-radius: 12px;
+            max-width: 340px;
+            width: max-content;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            z-index: 1002;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+        }
+
+        .classification-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .classification-tooltip-header {
+            padding: 10px 14px;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .classification-tooltip-header.baseline-header {
+            background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);
+        }
+        .classification-tooltip-header.delta-green-header {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        }
+        .classification-tooltip-header.delta-red-header {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1B 100%);
+        }
+
+        .classification-tooltip-content {
+            padding: 12px 14px;
+        }
+
+        .classification-tooltip-content p {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--gray-700);
+            margin-bottom: 8px;
+        }
+
+        .classification-tooltip-content .example {
+            font-size: 11px;
+            color: var(--gray-600);
+            font-style: italic;
+            background: var(--gray-50);
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--gray-300);
+            margin: 0;
+        }
+
+        /* Stage Hover Tooltip */
+        .stage-tooltip {
+            position: fixed;
+            background: var(--white);
+            border-radius: 12px;
+            max-width: 380px;
+            width: max-content;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            z-index: 1002;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+        }
+
+        .stage-tooltip.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stage-tooltip-header {
+            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
+            padding: 12px 16px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stage-tooltip-header.sales-header {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, #2563EB 100%);
+        }
+
+        .stage-tooltip-header.nego-header {
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #7C3AED 100%);
+        }
+
+        .stage-tooltip-header.success-header {
+            background: linear-gradient(135deg, #059669 0%, var(--success) 100%);
+        }
+
+        .stage-tooltip-header h3 {
+            font-weight: 700;
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .stage-tooltip-header .maturity {
+            background: rgba(255, 255, 255, 0.22);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .stage-tooltip-content {
+            padding: 14px 16px;
+        }
+
+        .stage-tooltip-content .criteria-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--iceye-teal);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stage-tooltip.sales-phase .criteria-title {
+            color: var(--accent-blue);
+        }
+
+        .stage-tooltip.nego-phase .criteria-title {
+            color: var(--accent-purple);
+        }
+
+        .stage-tooltip.success-phase .criteria-title {
+            color: var(--success);
+        }
+
+        .stage-tooltip-content .criteria-item {
+            position: relative;
+            padding: 5px 0 5px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--gray-700);
+        }
+
+        .stage-tooltip-content .criteria-item:last-child {
+            border-bottom: none;
+        }
+
+        .stage-tooltip-content .criteria-item::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--iceye-teal);
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray-400);
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .footer-logo {
+            height: 18px;
+            width: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .phase-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .reviews-column,
+            .actions-column {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding-top: 10px;
+                border-top: 1px solid var(--gray-200);
+            }
+            
+            .link-row, .link-spacer {
+                height: auto;
+            }
+            
+            h1 { font-size: 28px; }
+            
+            .phase-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg class="iceye-logo" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
+                    <text x="0" y="22" font-family="'Instrument Sans', sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1E293B">ICEYE</text>
+                </svg>
+            </div>
+            <h1>Mission Sales Process</h1>
+            <p class="header-subtitle">From opportunity to contract — a structured approach to winning deals</p>
+        </header>
+
+        <!-- Column Headings -->
+        <div class="column-headings">
+            <div class="column-heading phase-heading">Phase</div>
+            <div class="column-heading stage-heading">Stage</div>
+            <div class="column-heading reviews-heading">Reviews</div>
+            <div class="column-heading actions-heading">Actions</div>
+        </div>
+
+        <!-- Business Development Phase -->
+        <div class="phase-section">
+            <div class="phase-content">
+                <div class="phase-column">
+                    <div class="phase-badge">
+                        <span class="phase-badge-icon">1</span>
+                        <div class="phase-badge-text">
+                            <span class="phase-badge-title">Business Development</span>
+                            <span class="phase-badge-meta">6-12 months<br>Sales led, Marketing supporting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stages-column">
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="0" data-stage="business-development">
+                            <div class="stage-bar">
+                                Business Development
+                                <span class="maturity-badge">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="10" data-stage="customer-identified-need">
+                            <div class="stage-bar">
+                                Customer has identified their need
+                                <span class="maturity-badge">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="15" data-stage="customer-qualified-iceye">
+                            <div class="stage-bar">
+                                Customer has qualified ICEYE
+                                <span class="maturity-badge">15%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="30" data-stage="evaluation">
+                            <div class="stage-bar">
+                                Evaluation
+                                <span class="maturity-badge">30%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews-column">
+                    <div class="link-row">
+                        <span class="review-link" data-review="review-0">Review 0</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <span class="review-link" data-review="review-1">Review 1</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                </div>
+                <div class="actions-column">
+                    <div class="link-row">
+                        <span class="stage-action">→ Sales lead enters the deal into Salesforce</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ Reach out to <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering</a> for a ROM proposal on Slack <strong>#missions-sales-engineering</strong></span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sales Phase -->
+        <div class="phase-section sales-phase">
+            <div class="phase-content">
+                <div class="phase-column">
+                    <div class="phase-badge">
+                        <span class="phase-badge-icon">2</span>
+                        <div class="phase-badge-text">
+                            <span class="phase-badge-title">Sales</span>
+                            <span class="phase-badge-meta">6-12 months<br>Sales led, Sales Eng. & Product supporting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stages-column">
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="40" data-stage="rfp-released">
+                            <div class="stage-bar">
+                                RFP Released
+                                <span class="maturity-badge">40%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="45" data-stage="rfp-submitted">
+                            <div class="stage-bar">
+                                RFP Submitted
+                                <span class="maturity-badge">45%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="60" data-stage="iceye-selected">
+                            <div class="stage-bar">
+                                ICEYE Selected
+                                <span class="maturity-badge">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews-column">
+                    <div class="link-row">
+                        <span class="review-link" data-review="review-2">Review 2</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                </div>
+                <div class="actions-column">
+                    <div class="link-row">
+                        <span class="stage-action">→ <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5172691226/Mission+Sales+Engineering" target="_blank">Sales Engineering</a> proposal process to be followed (bid/no-bid)</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ <a href="https://docs.google.com/document/d/1qGsrEIFbicIoYI9M9Jqeu6SBC1olKyIkamdH5wWs-yo/edit?usp=drive_link" target="_blank">Close process triggered</a> — sales lead is responsible</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Negotiations Phase -->
+        <div class="phase-section nego-phase">
+            <div class="phase-content">
+                <div class="phase-column">
+                    <div class="phase-badge">
+                        <span class="phase-badge-icon">3</span>
+                        <div class="phase-badge-text">
+                            <span class="phase-badge-title">Negotiations</span>
+                            <span class="phase-badge-meta">2-6 months<br>Program & Sales led</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stages-column">
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="70" data-stage="hot-agreed">
+                            <div class="stage-bar">
+                                Heads of Terms Agreed
+                                <span class="maturity-badge">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="80" data-stage="negotiations-underway">
+                            <div class="stage-bar">
+                                Negotiations Underway
+                                <span class="maturity-badge">80%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stage-arrow">↓</div>
+                    <div class="stage-row">
+                        <div class="stage" data-maturity="100" data-stage="contract-signed">
+                            <div class="stage-bar">
+                                Contract Signed
+                                <span class="maturity-badge">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reviews-column">
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <span class="review-link" data-review="contract-approval">Contract Approval</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                </div>
+                <div class="actions-column">
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <svg class="footer-logo" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="18" font-family="'Instrument Sans', sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#64748B">ICEYE</text>
+            </svg>
+            <span>PROPRIETARY AND CONFIDENTIAL</span>
+        </footer>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup" id="popup">
+            <div class="popup-header">
+                <h2 id="popup-title">Stage Title</h2>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="popup-maturity" id="popup-maturity">0%</span>
+                    <button class="popup-close" id="popup-close">×</button>
+                </div>
+            </div>
+            <div class="popup-content" id="popup-content">
+            </div>
+        </div>
+    </div>
+
+    <!-- Classification Hover Tooltip -->
+    <div class="classification-tooltip" id="classification-tooltip">
+        <div class="classification-tooltip-header" id="classification-tooltip-header"></div>
+        <div class="classification-tooltip-content" id="classification-tooltip-content"></div>
+    </div>
+
+    <!-- Stage Hover Tooltip -->
+    <div class="stage-tooltip" id="stage-tooltip">
+        <div class="stage-tooltip-header">
+            <h3 id="stage-tooltip-title"></h3>
+            <span class="maturity" id="stage-tooltip-maturity"></span>
+        </div>
+        <div class="stage-tooltip-content" id="stage-tooltip-content"></div>
+    </div>
+
+    <script>
+        const stageCriteria = {
+            'business-development': {
+                title: 'Business Development',
+                maturity: '0%',
+                criteria: [
+                    'Sales leader is actively assessing whether a customer is aware of their need',
+                    'Sales leader is assessing whether the customer is aware of ICEYE\'s capabilities'
+                ]
+            },
+            'customer-identified-need': {
+                title: 'Customer has identified their need',
+                maturity: '10%',
+                criteria: [
+                    'Customer has recognised their need for a solution',
+                    'Customer is actively considering options to meet their need'
+                ]
+            },
+            'customer-qualified-iceye': {
+                title: 'Customer has qualified ICEYE',
+                maturity: '15%',
+                criteria: [
+                    'Sales leader has formed a relationship with customer',
+                    'Sales leader has briefed them in depth about ICEYE\'s capabilities'
+                ]
+            },
+            'evaluation': {
+                title: 'Evaluation',
+                maturity: '30%',
+                criteria: [
+                    'Deal Review has been completed',
+                    'Customer is actively requesting a budget and indicating an intent to procure',
+                    'Customer has defined their high-level requirements'
+                ]
+            },
+            'rfp-released': {
+                title: 'RFP Released',
+                maturity: '40%',
+                criteria: ['RFP has been released']
+            },
+            'rfp-submitted': {
+                title: 'RFP Submitted',
+                maturity: '45%',
+                criteria: ['RFP has been approved and submitted to the customer']
+            },
+            'iceye-selected': {
+                title: 'ICEYE Selected',
+                maturity: '60%',
+                criteria: [
+                    'The RFP evaluation has been completed',
+                    'ICEYE has been formally notified as being the selected provider',
+                    'Customer is willing to enter into negotiations with ICEYE'
+                ]
+            },
+            'hot-agreed': {
+                title: 'Heads of Terms Agreed',
+                maturity: '70%',
+                criteria: [
+                    'Heads of terms have been issued',
+                    'Heads of terms have been discussed and agreed with Customer'
+                ]
+            },
+            'negotiations-underway': {
+                title: 'Negotiations Underway',
+                maturity: '80%',
+                criteria: [
+                    'Negotiation timeline has been agreed',
+                    'Negotiation meetings are booked'
+                ]
+            },
+            'contract-signed': {
+                title: 'Contract Signed',
+                maturity: '100%',
+                criteria: [
+                    'The contract has been signed by both (or all) parties',
+                    'Opportunity can be "Submitted for Close"'
+                ]
+            }
+        };
+
+        const reviewData = {
+            'review-0': {
+                title: 'Review 0',
+                details: [
+                    { label: 'Completed by:', value: 'Sales Leader' },
+                    { label: 'Pass Criteria:', value: 'Deal is recognised as a real opportunity worth pursuing' },
+                    { label: 'Results in:', value: 'Salesforce Pipeline Entry', highlight: true }
+                ]
+            },
+            'review-1': {
+                title: 'Review 1 — Deal Review',
+                details: [
+                    { label: 'Completed by:', value: 'Head of Sales + Head of Product' },
+                    { label: 'Format:', value: 'Triggered in SF, reviewed using campaign review doc' },
+                    { label: 'Pass Criteria:', value: 'Customer need and budget identified' },
+                    { label: 'Results in:', value: 'ICEYE commits engineering resources. Deal classed as:', highlight: true }
+                ],
+                hasClassification: true
+            },
+            'review-2': {
+                title: 'Review 2 — Proposal Approval',
+                details: [
+                    { label: 'Completed by:', value: 'Head of Sales + Head of Product (DG+ Sales Eng, DR+ Engineering)' },
+                    { label: 'Pass Criteria:', value: 'Proposal documents reviewed & approved for submission' },
+                    { label: 'Results in:', value: 'ICEYE commits to delivering proposal contents', highlight: true }
+                ]
+            },
+            'contract-approval': {
+                title: 'Contract Approval',
+                details: [
+                    { label: 'Completed by:', value: 'Head of Sales + Head of Product' },
+                    { label: 'Pass Criteria:', value: 'Contract documents approved for signature' },
+                    { label: 'Results in:', value: 'ICEYE commits to delivering negotiated terms', highlight: true }
+                ]
+            }
+        };
+
+        const classificationData = {
+            'baseline': {
+                title: 'Baseline (B)',
+                headerClass: 'baseline-header',
+                description: 'Things we can deliver today',
+                example: 'E.g. Gen-3.5\'s at standard pricing'
+            },
+            'delta-green': {
+                title: 'Delta Green (DG)',
+                headerClass: 'delta-green-header',
+                description: 'Things we don\'t have today, but are planning soon in the roadmap',
+                example: 'E.g. Gen-4\'s in small numbers, at standard pricing, AIT in-country but on the global expansion plan'
+            },
+            'delta-red': {
+                title: 'Delta Red (DR)',
+                headerClass: 'delta-red-header',
+                description: 'Things we don\'t have today, and would need to change the roadmap to deliver',
+                example: 'E.g. Any non-standard offers, new sensors/orbits/launchers, Gen-4\'s in big numbers, AIT in a new country not on the global expansion plan'
+            }
+        };
+
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popup = document.getElementById('popup');
+        const popupTitle = document.getElementById('popup-title');
+        const popupMaturity = document.getElementById('popup-maturity');
+        const popupContent = document.getElementById('popup-content');
+        const popupClose = document.getElementById('popup-close');
+
+        function positionPopup(el, e) {
+            let left = e.clientX + 12;
+            let top = e.clientY - 10;
+            
+            requestAnimationFrame(() => {
+                const pr = popup.getBoundingClientRect();
+                if (left + pr.width > window.innerWidth - 20) left = e.clientX - pr.width - 12;
+                if (left < 20) left = 20;
+                if (top + pr.height > window.innerHeight - 20) top = window.innerHeight - pr.height - 20;
+                if (top < 20) top = 20;
+                popup.style.left = left + 'px';
+                popup.style.top = top + 'px';
+            });
+            
+            popup.style.left = left + 'px';
+            popup.style.top = top + 'px';
+        }
+
+        // Stage tooltip elements
+        const stageTooltip = document.getElementById('stage-tooltip');
+        const stageTooltipTitle = document.getElementById('stage-tooltip-title');
+        const stageTooltipMaturity = document.getElementById('stage-tooltip-maturity');
+        const stageTooltipContent = document.getElementById('stage-tooltip-content');
+
+        // Stage hover handlers
+        document.querySelectorAll('.stage').forEach(stage => {
+            stage.addEventListener('mouseenter', (e) => {
+                if (e.target.tagName === 'A') return;
+                const data = stageCriteria[stage.dataset.stage];
+                if (data) {
+                    stageTooltipTitle.textContent = data.title;
+                    stageTooltipMaturity.textContent = data.maturity;
+                    stageTooltipContent.innerHTML = `
+                        <div class="criteria-title">Stage Criteria</div>
+                        ${data.criteria.map(c => `<div class="criteria-item">${c}</div>`).join('')}
+                    `;
+                    
+                    // Set header color based on phase (maturity percentage)
+                    const maturity = parseInt(stage.dataset.maturity);
+                    const header = stageTooltip.querySelector('.stage-tooltip-header');
+                    header.className = 'stage-tooltip-header';
+                    stageTooltip.classList.remove('sales-phase', 'nego-phase', 'success-phase');
+                    if (maturity === 100) {
+                        header.classList.add('success-header');
+                        stageTooltip.classList.add('success-phase');
+                    } else if (maturity >= 70) {
+                        header.classList.add('nego-header');
+                        stageTooltip.classList.add('nego-phase');
+                    } else if (maturity >= 40) {
+                        header.classList.add('sales-header');
+                        stageTooltip.classList.add('sales-phase');
+                    }
+                    // 0-30% keeps default teal color
+                    
+                    // Position the tooltip near the stage
+                    const rect = stage.getBoundingClientRect();
+                    let left = rect.right + 15;
+                    let top = rect.top;
+                    
+                    stageTooltip.style.left = left + 'px';
+                    stageTooltip.style.top = top + 'px';
+                    stageTooltip.classList.add('visible');
+                    
+                    // Adjust if it goes off screen
+                    requestAnimationFrame(() => {
+                        const tooltipRect = stageTooltip.getBoundingClientRect();
+                        if (left + tooltipRect.width > window.innerWidth - 20) {
+                            left = rect.left - tooltipRect.width - 15;
+                        }
+                        if (top + tooltipRect.height > window.innerHeight - 20) {
+                            top = window.innerHeight - tooltipRect.height - 20;
+                        }
+                        if (top < 20) top = 20;
+                        stageTooltip.style.left = left + 'px';
+                        stageTooltip.style.top = top + 'px';
+                    });
+                }
+            });
+            
+            stage.addEventListener('mouseleave', () => {
+                stageTooltip.classList.remove('visible');
+            });
+        });
+
+        // Review link clicks
+        document.querySelectorAll('.review-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const data = reviewData[link.dataset.review];
+                if (data) {
+                    popup.classList.remove('classification-popup');
+                    popup.querySelector('.popup-header').className = 'popup-header review-header';
+                    popupMaturity.style.display = 'none';
+                    popupTitle.textContent = data.title;
+                    
+                    let html = data.details.map(d => `
+                        <div class="review-detail">
+                            <span class="review-label">${d.label}</span>
+                            <span class="review-value ${d.highlight ? 'highlight' : ''}">${d.value}</span>
+                        </div>
+                    `).join('');
+                    
+                    if (data.hasClassification) {
+                        html += `
+                            <div class="classification-tags">
+                                <span class="tag tag-baseline" data-classification="baseline">Baseline (B)</span>
+                                <span class="tag tag-delta-green" data-classification="delta-green">Delta Green (DG)</span>
+                                <span class="tag tag-delta-red" data-classification="delta-red">Delta Red (DR)</span>
+                            </div>
+                        `;
+                    }
+                    
+                    popupContent.innerHTML = html;
+                    
+                    // Re-bind classification tags in popup for hover
+                    bindClassificationHover(popupContent);
+                    
+                    popupOverlay.classList.add('active');
+                    positionPopup(link, e);
+                }
+            });
+        });
+
+        // Classification tooltip elements
+        const classificationTooltip = document.getElementById('classification-tooltip');
+        const classificationTooltipHeader = document.getElementById('classification-tooltip-header');
+        const classificationTooltipContent = document.getElementById('classification-tooltip-content');
+
+        // Classification hover handlers
+        function bindClassificationHover(container) {
+            container.querySelectorAll('.tag[data-classification]').forEach(tag => {
+                tag.addEventListener('mouseenter', handleClassificationEnter);
+                tag.addEventListener('mouseleave', handleClassificationLeave);
+            });
+        }
+
+        function handleClassificationEnter(e) {
+            const data = classificationData[e.target.dataset.classification];
+            if (data) {
+                classificationTooltipHeader.className = 'classification-tooltip-header ' + data.headerClass;
+                classificationTooltipHeader.textContent = data.title;
+                classificationTooltipContent.innerHTML = `<p><strong>${data.description}</strong></p><p class="example">${data.example}</p>`;
+                
+                // Position the tooltip near the tag
+                const rect = e.target.getBoundingClientRect();
+                let left = rect.right + 10;
+                let top = rect.top;
+                
+                // Show tooltip to calculate dimensions
+                classificationTooltip.style.left = left + 'px';
+                classificationTooltip.style.top = top + 'px';
+                classificationTooltip.classList.add('visible');
+                
+                // Adjust if it goes off screen
+                requestAnimationFrame(() => {
+                    const tooltipRect = classificationTooltip.getBoundingClientRect();
+                    if (left + tooltipRect.width > window.innerWidth - 20) {
+                        left = rect.left - tooltipRect.width - 10;
+                    }
+                    if (top + tooltipRect.height > window.innerHeight - 20) {
+                        top = window.innerHeight - tooltipRect.height - 20;
+                    }
+                    if (top < 20) top = 20;
+                    classificationTooltip.style.left = left + 'px';
+                    classificationTooltip.style.top = top + 'px';
+                });
+            }
+        }
+
+        function handleClassificationLeave(e) {
+            classificationTooltip.classList.remove('visible');
+        }
+
+        popupClose.addEventListener('click', () => popupOverlay.classList.remove('active'));
+        popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) popupOverlay.classList.remove('active'); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popupOverlay.classList.remove('active'); });
+    </script>
+</body>
+</html>
