@@ -6,27 +6,32 @@
     <title>ICEYE Mission Sales Process</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
-            --iceye-teal: #00A19C;
-            --iceye-teal-dark: #007A76;
-            --iceye-teal-light: #00CCC5;
-            --accent-blue: #3B82F6;
-            --accent-purple: #8B5CF6;
-            --review-coral: #E63946;
-            --white: #FFFFFF;
-            --gray-50: #F8FAFC;
-            --gray-100: #F1F5F9;
-            --gray-200: #E2E8F0;
-            --gray-300: #CBD5E1;
-            --gray-400: #94A3B8;
-            --gray-500: #64748B;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1E293B;
-            --gray-900: #0F172A;
-            --success: #10B981;
+            /* Primary Palette */
+            --iceye-night-black: #011C22;
+            --iceye-stellar-white: #FFFFFF;
+            --iceye-cyan: #D7FFF5;
+            --iceye-cyan-tint-1: #AFF5E5;
+            --iceye-platinum: #EBF2F1;
+            --iceye-pulsar-red: #FF325C;
+            --iceye-night-black-tint-1: #2E444A;
+            --iceye-night-black-tint-2: #9EB8B8;
+            
+            /* Secondary Palette (Data Visualization) */
+            --iceye-dark-pulsar: #991036;
+            --iceye-light-pulsar: #EB4860;
+            --iceye-sun: #E07C2E;
+            --iceye-light-sun: #EBAC6A;
+            --iceye-dark-sea: #175465;
+            --iceye-sea: #24849E;
+            --iceye-light-sea: #4FB3C9;
+            --iceye-cyan-secondary: #85D9CB;
+            
+            /* Typography */
+            --font-primary: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-accent: 'Space Mono', monospace;
         }
 
         * {
@@ -36,90 +41,104 @@
         }
 
         body {
-            font-family: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(180deg, var(--gray-50) 0%, var(--gray-100) 100%);
+            font-family: var(--font-primary);
+            background: var(--iceye-stellar-white);
             min-height: 100vh;
-            color: var(--gray-800);
-        }
-
-        .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 0% 0%, rgba(0, 161, 156, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 100% 100%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 0;
+            color: var(--iceye-night-black);
+            font-size: 15px;
+            line-height: 21px;
         }
 
         .container {
-            position: relative;
-            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 40px;
+            padding: 60px 40px;
         }
 
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 48px;
         }
 
         .logo {
             display: inline-flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 20px;
-        }
-
-        .logo-mark {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 16px;
-            color: white;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 16px rgba(0, 161, 156, 0.3);
+            margin-bottom: 24px;
         }
 
         .iceye-logo {
-            height: 28px;
+            height: 32px;
             width: auto;
         }
 
+        .iceye-wordmark {
+            font-family: var(--font-primary);
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--iceye-night-black);
+            letter-spacing: 2px;
+        }
+
         h1 {
-            font-size: 38px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--iceye-teal-dark) 0%, var(--iceye-teal) 50%, var(--accent-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
+            font-size: 36px;
+            line-height: 40px;
+            font-weight: 400;
+            color: var(--iceye-night-black);
+            margin-bottom: 12px;
         }
 
         .header-subtitle {
-            color: var(--gray-500);
+            color: var(--iceye-night-black);
             font-size: 15px;
-            font-weight: 500;
+            line-height: 21px;
+            font-weight: 400;
+        }
+
+        /* Column Headings */
+        .column-headings {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+            padding: 0 28px;
+        }
+
+        .column-heading {
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--iceye-night-black);
+        }
+
+        .column-heading.phase-heading {
+            width: 140px;
+            flex-shrink: 0;
+        }
+
+        .column-heading.stage-heading {
+            flex: 1;
+        }
+
+        .column-heading.reviews-heading {
+            width: 140px;
+            flex-shrink: 0;
+        }
+
+        .column-heading.actions-heading {
+            width: 280px;
+            flex-shrink: 0;
         }
 
         /* Phase Section */
         .phase-section {
-            margin-bottom: 20px;
-            background: var(--white);
-            border-radius: 16px;
+            margin-bottom: 16px;
+            background: var(--iceye-platinum);
+            border-radius: 12px;
             padding: 24px 28px;
-            border: 1px solid var(--gray-200);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.03);
             position: relative;
             overflow: hidden;
         }
@@ -129,17 +148,29 @@
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--iceye-teal), var(--iceye-teal-light));
+            width: 4px;
+            height: 100%;
+            background: var(--iceye-cyan);
         }
 
-        .phase-section.sales-phase::before {
-            background: linear-gradient(90deg, var(--accent-blue), #60A5FA);
+        /* Phase 1 - Night Black */
+        .phase-section.phase-1::before {
+            background: var(--iceye-night-black);
         }
 
-        .phase-section.nego-phase::before {
-            background: linear-gradient(90deg, var(--accent-purple), #A78BFA);
+        /* Phase 2 - Night Black Tint #1 */
+        .phase-section.phase-2::before {
+            background: var(--iceye-night-black-tint-1);
+        }
+
+        /* Phase 3 - Night Black Tint #2 */
+        .phase-section.phase-3::before {
+            background: var(--iceye-night-black-tint-2);
+        }
+
+        /* Extra top padding for Phase 1 to accommodate Review 0 above */
+        .phase-section.phase-1 {
+            padding-top: 44px;
         }
 
         /* Four-column layout */
@@ -159,60 +190,74 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(180deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
-            color: white;
+            background: var(--iceye-night-black);
+            color: var(--iceye-stellar-white);
             padding: 20px 16px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0, 161, 156, 0.25);
+            border-radius: 8px;
             width: 140px;
             text-align: center;
             height: 100%;
         }
 
-        .phase-section.sales-phase .phase-badge {
-            background: linear-gradient(180deg, var(--accent-blue) 0%, #2563EB 100%);
-            box-shadow: 0 4px 16px rgba(59, 130, 246, 0.25);
-        }
-
-        .phase-section.nego-phase .phase-badge {
-            background: linear-gradient(180deg, var(--accent-purple) 0%, #7C3AED 100%);
-            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.25);
-        }
-
         .phase-badge-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: var(--iceye-cyan);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 600;
             flex-shrink: 0;
+            color: var(--iceye-night-black);
+        }
+
+        /* Phase badge colors */
+        .phase-section.phase-1 .phase-badge {
+            background: var(--iceye-night-black);
+        }
+        .phase-section.phase-1 .phase-badge-icon {
+            background: var(--iceye-stellar-white);
+            color: var(--iceye-night-black);
+        }
+
+        .phase-section.phase-2 .phase-badge {
+            background: var(--iceye-night-black-tint-1);
+        }
+        .phase-section.phase-2 .phase-badge-icon {
+            background: var(--iceye-stellar-white);
+            color: var(--iceye-night-black-tint-1);
+        }
+
+        .phase-section.phase-3 .phase-badge {
+            background: var(--iceye-night-black-tint-2);
+        }
+        .phase-section.phase-3 .phase-badge-icon {
+            background: var(--iceye-stellar-white);
+            color: var(--iceye-night-black-tint-2);
         }
 
         .phase-badge-text {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .phase-badge-title {
-            font-weight: 700;
-            font-size: 12px;
+            font-family: var(--font-accent);
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            line-height: 1.3;
+            letter-spacing: 0.5px;
         }
 
         .phase-badge-meta {
-            font-size: 10px;
-            font-weight: 500;
-            opacity: 0.85;
-            text-transform: none;
-            letter-spacing: 0;
-            line-height: 1.4;
+            font-size: 14px;
+            line-height: 19px;
+            font-weight: 400;
+            opacity: 0.8;
         }
 
         .stages-column {
@@ -227,45 +272,10 @@
         }
 
         .actions-column {
-            width: 260px;
+            width: 280px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Column Headings */
-        .column-headings {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 12px;
-            padding: 0 28px;
-        }
-
-        .column-heading {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gray-500);
-        }
-
-        .column-heading.phase-heading {
-            width: 140px;
-            flex-shrink: 0;
-        }
-
-        .column-heading.stage-heading {
-            flex: 1;
-        }
-
-        .column-heading.reviews-heading {
-            width: 140px;
-            flex-shrink: 0;
-        }
-
-        .column-heading.actions-heading {
-            width: 260px;
-            flex-shrink: 0;
         }
 
         /* Stage Row */
@@ -277,7 +287,7 @@
 
         .stage {
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             width: 100%;
         }
 
@@ -287,110 +297,93 @@
 
         .stage-bar {
             position: relative;
-            height: 46px;
+            height: 44px;
             display: flex;
             align-items: center;
             padding: 0 16px;
-            border-radius: 10px;
-            color: white;
-            font-weight: 600;
+            border-radius: 6px;
+            color: var(--iceye-stellar-white);
+            font-weight: 500;
             font-size: 14px;
-            transition: all 0.25s ease;
+            line-height: 19px;
+            transition: all 0.2s ease;
             overflow: hidden;
             white-space: nowrap;
-        }
-
-        .stage-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%);
-            pointer-events: none;
+            background: var(--iceye-night-black);
         }
 
         .stage:hover .stage-bar {
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-            transform: scale(1.01);
+            filter: brightness(1.15);
         }
 
-        /* Stage colors and widths - funnel effect */
-        .stage[data-maturity="0"] .stage-bar { 
-            width: 100%;
-            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
-            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+        /* Stage widths - funnel effect */
+        .stage[data-maturity="0"] .stage-bar { width: 100%; }
+        .stage[data-maturity="10"] .stage-bar { width: 95%; }
+        .stage[data-maturity="15"] .stage-bar { width: 90%; }
+        .stage[data-maturity="30"] .stage-bar { width: 85%; }
+        .stage[data-maturity="40"] .stage-bar { width: 80%; }
+        .stage[data-maturity="45"] .stage-bar { width: 75%; }
+        .stage[data-maturity="60"] .stage-bar { width: 70%; }
+        .stage[data-maturity="70"] .stage-bar { width: 65%; }
+        .stage[data-maturity="80"] .stage-bar { width: 60%; }
+        .stage[data-maturity="100"] .stage-bar { width: 55%; }
+
+        /* Phase 1 stage colors - Night Black */
+        .phase-section.phase-1 .stage-bar {
+            background: var(--iceye-night-black);
         }
-        .stage[data-maturity="10"] .stage-bar { 
-            width: 95%;
-            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
-            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+
+        /* Phase 2 stage colors - Night Black Tint #1 */
+        .phase-section.phase-2 .stage-bar {
+            background: var(--iceye-night-black-tint-1);
         }
-        .stage[data-maturity="15"] .stage-bar { 
-            width: 90%;
-            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
-            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
+
+        /* Phase 3 stage colors - Night Black Tint #2 */
+        .phase-section.phase-3 .stage-bar {
+            background: var(--iceye-night-black-tint-2);
+            color: var(--iceye-night-black);
         }
-        .stage[data-maturity="30"] .stage-bar { 
-            width: 85%;
-            background: linear-gradient(135deg, #0D9488 0%, var(--iceye-teal) 100%);
-            box-shadow: 0 2px 12px rgba(0, 161, 156, 0.2);
-        }
-        .stage[data-maturity="40"] .stage-bar { 
-            width: 80%;
-            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
-            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
-        }
-        .stage[data-maturity="45"] .stage-bar { 
-            width: 75%;
-            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
-            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
-        }
-        .stage[data-maturity="60"] .stage-bar { 
-            width: 70%;
-            background: linear-gradient(135deg, #2563EB 0%, var(--accent-blue) 100%);
-            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
-        }
-        .stage[data-maturity="70"] .stage-bar { 
-            width: 65%;
-            background: linear-gradient(135deg, #7C3AED 0%, var(--accent-purple) 100%);
-            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
-        }
-        .stage[data-maturity="80"] .stage-bar { 
-            width: 60%;
-            background: linear-gradient(135deg, #7C3AED 0%, var(--accent-purple) 100%);
-            box-shadow: 0 2px 12px rgba(139, 92, 246, 0.2);
-        }
-        .stage[data-maturity="100"] .stage-bar { 
-            width: 55%;
-            background: linear-gradient(135deg, #059669 0%, var(--success) 100%);
-            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.25);
+
+        /* Final stage (100%) - Sun */
+        .stage[data-maturity="100"] .stage-bar {
+            background: var(--iceye-sun);
+            color: var(--iceye-stellar-white);
         }
 
         /* Down arrow between stages */
         .stage-arrow {
             text-align: left;
             padding: 6px 0 6px 80px;
-            color: var(--gray-400);
-            font-size: 16px;
-            font-weight: 700;
+            color: var(--iceye-night-black-tint-2);
+            font-size: 14px;
+            font-weight: 600;
             line-height: 1;
         }
 
         .maturity-badge {
             position: absolute;
             right: 12px;
-            background: rgba(255, 255, 255, 0.22);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: var(--font-accent);
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .phase-section.phase-3 .maturity-badge {
+            background: rgba(1, 28, 34, 0.2);
+        }
+
+        .stage[data-maturity="100"] .maturity-badge {
+            background: rgba(255, 255, 255, 0.25);
         }
 
         /* Links column items */
         .link-row {
-            min-height: 46px;
+            min-height: 44px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -399,66 +392,51 @@
         }
 
         .link-spacer {
-            min-height: 26px; /* matches arrow height (padding 6px * 2 + font 14px) */
-        }
-
-        .reviews-column .link-row {
-            align-items: flex-start;
-        }
-        
-        .actions-column .link-row {
-            align-items: flex-start;
+            min-height: 26px;
         }
 
         .stage-action {
-            color: var(--gray-500);
-            font-size: 12px;
-            font-weight: 500;
+            color: var(--iceye-night-black);
+            font-size: 14px;
+            line-height: 19px;
+            font-weight: 400;
             white-space: normal;
-            line-height: 1.4;
         }
 
         .stage-action a {
-            color: var(--iceye-teal);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px dashed var(--iceye-teal);
-            transition: all 0.2s;
+            color: var(--iceye-night-black);
+            text-decoration: underline;
+            font-weight: 500;
+            transition: color 0.2s;
         }
 
         .stage-action a:hover {
-            color: var(--iceye-teal-dark);
-            border-bottom-style: solid;
+            color: var(--iceye-night-black-tint-1);
         }
 
-        /* Review Link */
+        /* Review Link - Pulsar Red */
         .review-link {
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
+            color: var(--iceye-stellar-white);
+            font-family: var(--font-accent);
+            font-size: 10px;
+            line-height: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
-            height: 46px;
-            padding: 0 16px;
-            border-radius: 10px;
-            background: #D97075;
-            transition: all 0.2s ease;
+            height: 22px;
+            padding: 0 12px;
+            border-radius: 4px;
+            background: var(--iceye-pulsar-red);
+            transition: background 0.2s ease;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(217, 112, 117, 0.25);
         }
 
         .review-link:hover {
-            background: #C45D62;
-            transform: scale(1.01);
-        }
-
-        .review-link::before {
-            content: "★";
-            font-size: 11px;
-            color: white;
+            background: var(--iceye-dark-pulsar);
         }
 
         /* Popup */
@@ -468,7 +446,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(15, 23, 42, 0.4);
+            background: rgba(1, 28, 34, 0.5);
             backdrop-filter: blur(4px);
             display: none;
             z-index: 1000;
@@ -480,12 +458,12 @@
 
         .popup {
             position: fixed;
-            background: var(--white);
-            border-radius: 14px;
+            background: var(--iceye-stellar-white);
+            border-radius: 8px;
             max-width: 456px;
             width: max-content;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
-            animation: popupIn 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 50px rgba(1, 28, 34, 0.3);
+            animation: popupIn 0.2s ease;
             overflow: hidden;
             z-index: 1001;
         }
@@ -496,71 +474,77 @@
         }
 
         .popup-header {
-            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
-            color: white;
-            padding: 14px 16px;
+            background: var(--iceye-night-black);
+            color: var(--iceye-stellar-white);
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .popup-header.review-header {
-            background: linear-gradient(135deg, var(--review-coral) 0%, #C1121F 100%);
+            background: var(--iceye-pulsar-red);
         }
 
         .popup-header h2 {
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 15px;
+            line-height: 21px;
+            font-weight: 600;
         }
 
         .popup-maturity {
-            background: rgba(255, 255, 255, 0.22);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: var(--font-accent);
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
         }
 
         .popup-close {
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.15);
             border: none;
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 8px;
+            color: var(--iceye-stellar-white);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
-            transition: all 0.2s;
-            margin-left: 10px;
+            font-size: 18px;
+            transition: background 0.2s;
+            margin-left: 12px;
         }
 
         .popup-close:hover {
-            background: rgba(255, 255, 255, 0.28);
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .popup-content {
-            padding: 16px;
+            padding: 20px;
         }
 
         .popup-content h3 {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--iceye-teal);
-            margin-bottom: 10px;
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            color: var(--iceye-night-black);
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .criteria-item {
             position: relative;
-            padding: 5px 0 5px 20px;
-            border-bottom: 1px solid var(--gray-100);
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--gray-700);
+            padding: 8px 0 8px 24px;
+            border-bottom: 1px solid var(--iceye-platinum);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
         }
 
         .criteria-item:last-child {
@@ -568,21 +552,22 @@
         }
 
         .criteria-item::before {
-            content: "✓";
+            content: "";
             position: absolute;
             left: 0;
-            top: 5px;
-            color: var(--iceye-teal);
-            font-weight: 700;
-            font-size: 11px;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            background: var(--iceye-cyan);
+            border-radius: 2px;
         }
 
         /* Review popup content */
         .review-detail {
             display: flex;
-            margin-bottom: 8px;
-            font-size: 13px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 19px;
         }
 
         .review-detail:last-child {
@@ -590,19 +575,21 @@
         }
 
         .review-label {
-            width: 100px;
-            color: var(--gray-500);
+            width: 110px;
+            color: var(--iceye-night-black);
             font-weight: 600;
             flex-shrink: 0;
         }
 
         .review-value {
-            color: var(--gray-700);
+            color: var(--iceye-night-black);
         }
 
         .review-value.highlight {
-            color: var(--success);
-            font-weight: 700;
+            background: var(--iceye-cyan);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
         }
 
         /* Classification Tags */
@@ -610,73 +597,86 @@
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-top: 10px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--iceye-platinum);
         }
 
         .tag {
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s ease;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.5px;
         }
 
         .tag:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .tag-baseline { 
-            background: var(--gray-200);
-            color: var(--gray-700);
+            background: var(--iceye-platinum);
+            color: var(--iceye-night-black);
+        }
+        .tag-baseline:hover {
+            background: var(--iceye-night-black-tint-2);
         }
         .tag-delta-green { 
-            background: #D1FAE5;
-            color: #065F46;
+            background: var(--iceye-cyan);
+            color: var(--iceye-night-black);
+        }
+        .tag-delta-green:hover {
+            background: var(--iceye-cyan-tint-1);
         }
         .tag-delta-red { 
-            background: #FEE2E2;
-            color: #991B1B;
+            background: var(--iceye-pulsar-red);
+            color: var(--iceye-stellar-white);
+        }
+        .tag-delta-red:hover {
+            background: var(--iceye-dark-pulsar);
         }
 
         /* Classification popup headers */
         .popup.classification-popup .popup-header.baseline-header {
-            background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);
+            background: var(--iceye-night-black-tint-1);
         }
         .popup.classification-popup .popup-header.delta-green-header {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            background: var(--iceye-night-black);
         }
         .popup.classification-popup .popup-header.delta-red-header {
-            background: linear-gradient(135deg, #DC2626 0%, #B91C1B 100%);
+            background: var(--iceye-pulsar-red);
         }
 
         .popup.classification-popup .popup-content p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--gray-700);
-            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+            margin-bottom: 12px;
         }
         .popup.classification-popup .popup-content .example {
-            font-size: 12px;
-            color: var(--gray-600);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
             font-style: italic;
-            background: var(--gray-50);
-            padding: 10px 12px;
-            border-radius: 8px;
-            border-left: 3px solid var(--gray-300);
+            background: var(--iceye-cyan);
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 0;
         }
 
         /* Classification Hover Tooltip */
         .classification-tooltip {
             position: fixed;
-            background: var(--white);
-            border-radius: 12px;
+            background: var(--iceye-stellar-white);
+            border-radius: 8px;
             max-width: 340px;
             width: max-content;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 12px 40px rgba(1, 28, 34, 0.25);
             overflow: hidden;
             z-index: 1002;
             pointer-events: none;
@@ -691,52 +691,56 @@
         }
 
         .classification-tooltip-header {
-            padding: 10px 14px;
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
+            padding: 12px 16px;
+            color: var(--iceye-stellar-white);
+            font-family: var(--font-accent);
+            font-weight: 400;
+            font-size: 8px;
+            line-height: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .classification-tooltip-header.baseline-header {
-            background: linear-gradient(135deg, var(--gray-600) 0%, var(--gray-700) 100%);
+            background: var(--iceye-night-black-tint-1);
         }
         .classification-tooltip-header.delta-green-header {
-            background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            background: var(--iceye-night-black);
         }
         .classification-tooltip-header.delta-red-header {
-            background: linear-gradient(135deg, #DC2626 0%, #B91C1B 100%);
+            background: var(--iceye-pulsar-red);
         }
 
         .classification-tooltip-content {
-            padding: 12px 14px;
+            padding: 16px;
         }
 
         .classification-tooltip-content p {
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--gray-700);
-            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+            margin-bottom: 12px;
         }
 
         .classification-tooltip-content .example {
-            font-size: 11px;
-            color: var(--gray-600);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
             font-style: italic;
-            background: var(--gray-50);
-            padding: 8px 10px;
+            background: var(--iceye-cyan);
+            padding: 10px 12px;
             border-radius: 6px;
-            border-left: 3px solid var(--gray-300);
             margin: 0;
         }
 
         /* Stage Hover Tooltip */
         .stage-tooltip {
             position: fixed;
-            background: var(--white);
-            border-radius: 12px;
+            background: var(--iceye-stellar-white);
+            border-radius: 8px;
             max-width: 380px;
             width: max-content;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 12px 40px rgba(1, 28, 34, 0.25);
             overflow: hidden;
             z-index: 1002;
             pointer-events: none;
@@ -751,72 +755,80 @@
         }
 
         .stage-tooltip-header {
-            background: linear-gradient(135deg, var(--iceye-teal) 0%, var(--iceye-teal-dark) 100%);
-            padding: 12px 16px;
-            color: white;
+            background: var(--iceye-night-black);
+            padding: 14px 20px;
+            color: var(--iceye-stellar-white);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .stage-tooltip-header.sales-header {
-            background: linear-gradient(135deg, var(--accent-blue) 0%, #2563EB 100%);
+        .stage-tooltip-header.phase-1-header {
+            background: var(--iceye-night-black);
         }
 
-        .stage-tooltip-header.nego-header {
-            background: linear-gradient(135deg, var(--accent-purple) 0%, #7C3AED 100%);
+        .stage-tooltip-header.phase-2-header {
+            background: var(--iceye-night-black-tint-1);
+        }
+
+        .stage-tooltip-header.phase-3-header {
+            background: var(--iceye-night-black-tint-2);
+            color: var(--iceye-night-black);
         }
 
         .stage-tooltip-header.success-header {
-            background: linear-gradient(135deg, #059669 0%, var(--success) 100%);
+            background: var(--iceye-sun);
+            color: var(--iceye-stellar-white);
         }
 
         .stage-tooltip-header h3 {
-            font-weight: 700;
-            font-size: 13px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 19px;
             margin: 0;
         }
 
         .stage-tooltip-header .maturity {
-            background: rgba(255, 255, 255, 0.22);
-            padding: 3px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: var(--font-accent);
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .stage-tooltip-header.phase-3-header .maturity {
+            background: rgba(1, 28, 34, 0.2);
+        }
+
+        .stage-tooltip-header.success-header .maturity {
+            background: rgba(255, 255, 255, 0.25);
         }
 
         .stage-tooltip-content {
-            padding: 14px 16px;
+            padding: 16px 20px;
         }
 
         .stage-tooltip-content .criteria-title {
-            font-size: 10px;
-            font-weight: 700;
-            color: var(--iceye-teal);
-            margin-bottom: 10px;
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            color: var(--iceye-night-black);
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stage-tooltip.sales-phase .criteria-title {
-            color: var(--accent-blue);
-        }
-
-        .stage-tooltip.nego-phase .criteria-title {
-            color: var(--accent-purple);
-        }
-
-        .stage-tooltip.success-phase .criteria-title {
-            color: var(--success);
+            letter-spacing: 0.5px;
         }
 
         .stage-tooltip-content .criteria-item {
             position: relative;
-            padding: 5px 0 5px 20px;
-            border-bottom: 1px solid var(--gray-100);
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--gray-700);
+            padding: 8px 0 8px 24px;
+            border-bottom: 1px solid var(--iceye-platinum);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
         }
 
         .stage-tooltip-content .criteria-item:last-child {
@@ -824,31 +836,44 @@
         }
 
         .stage-tooltip-content .criteria-item::before {
-            content: "✓";
+            content: "";
             position: absolute;
             left: 0;
-            top: 5px;
-            color: var(--iceye-teal);
-            font-weight: 700;
-            font-size: 11px;
+            top: 12px;
+            width: 8px;
+            height: 8px;
+            background: var(--iceye-cyan);
+            border-radius: 2px;
         }
 
         /* Footer */
         .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-200);
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--iceye-night-black-tint-2);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            color: var(--gray-400);
-            font-size: 11px;
-            font-weight: 600;
+            color: var(--iceye-night-black);
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .footer-logo {
-            height: 18px;
+            height: 20px;
             width: auto;
+        }
+
+        .footer-wordmark {
+            font-family: var(--font-primary);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--iceye-night-black);
+            letter-spacing: 2px;
         }
 
         /* Responsive */
@@ -864,33 +889,31 @@
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 10px;
-                padding-top: 10px;
-                border-top: 1px solid var(--gray-200);
+                padding-top: 16px;
+                border-top: 1px solid var(--iceye-night-black-tint-2);
             }
             
             .link-row, .link-spacer {
                 height: auto;
             }
             
-            h1 { font-size: 28px; }
+            h1 { 
+                font-size: 30px;
+                line-height: 36px;
+            }
             
-            .phase-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .column-headings {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg-pattern"></div>
-    
     <div class="container">
         <!-- Header -->
         <header class="header">
             <div class="logo">
-                <svg class="iceye-logo" viewBox="0 0 120 28" xmlns="http://www.w3.org/2000/svg">
-                    <text x="0" y="22" font-family="'Instrument Sans', sans-serif" font-size="24" font-weight="700" letter-spacing="3" fill="#1E293B">ICEYE</text>
-                </svg>
+                <span class="iceye-wordmark">ICEYE</span>
             </div>
             <h1>Mission Sales Process</h1>
             <p class="header-subtitle">From opportunity to contract — a structured approach to winning deals</p>
@@ -898,27 +921,27 @@
 
         <!-- Column Headings -->
         <div class="column-headings">
-            <div class="column-heading phase-heading">Phase</div>
-            <div class="column-heading stage-heading">Stage</div>
-            <div class="column-heading reviews-heading">Reviews</div>
-            <div class="column-heading actions-heading">Actions</div>
+            <div class="column-heading phase-heading">PHASE</div>
+            <div class="column-heading stage-heading">STAGE</div>
+            <div class="column-heading reviews-heading">REVIEWS</div>
+            <div class="column-heading actions-heading">ACTIONS</div>
         </div>
 
         <!-- Business Development Phase -->
-        <div class="phase-section">
+        <div class="phase-section phase-1">
             <div class="phase-content">
                 <div class="phase-column">
                     <div class="phase-badge">
                         <span class="phase-badge-icon">1</span>
                         <div class="phase-badge-text">
-                            <span class="phase-badge-title">Business Development</span>
-                            <span class="phase-badge-meta">6-12 months<br>Sales led, Marketing supporting</span>
+                            <span class="phase-badge-title">BUSINESS DEVELOPMENT</span>
+                            <span class="phase-badge-meta">6–12 months<br>Sales led, Marketing supporting</span>
                         </div>
                     </div>
                 </div>
                 <div class="stages-column">
                     <div class="stage-row">
-                        <div class="stage" data-maturity="0" data-stage="business-development">
+                        <div class="stage" data-maturity="0" data-stage="business-development" data-phase="1">
                             <div class="stage-bar">
                                 Business Development
                                 <span class="maturity-badge">0%</span>
@@ -927,7 +950,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="10" data-stage="customer-identified-need">
+                        <div class="stage" data-maturity="10" data-stage="customer-identified-need" data-phase="1">
                             <div class="stage-bar">
                                 Customer has identified their need
                                 <span class="maturity-badge">10%</span>
@@ -936,7 +959,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="15" data-stage="customer-qualified-iceye">
+                        <div class="stage" data-maturity="15" data-stage="customer-qualified-iceye" data-phase="1">
                             <div class="stage-bar">
                                 Customer has qualified ICEYE
                                 <span class="maturity-badge">15%</span>
@@ -945,7 +968,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="30" data-stage="evaluation">
+                        <div class="stage" data-maturity="30" data-stage="evaluation" data-phase="1">
                             <div class="stage-bar">
                                 Evaluation
                                 <span class="maturity-badge">30%</span>
@@ -954,14 +977,16 @@
                     </div>
                 </div>
                 <div class="reviews-column">
+                    <!-- Review 0: positioned above 0% -->
                     <div class="link-row">
-                        <span class="review-link" data-review="review-0">Review 0</span>
+                        <span class="review-link" data-review="review-0" style="transform: translateY(-35px);">REVIEW 0</span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row"></div>
                     <div class="link-spacer"></div>
+                    <!-- Review 1: between 15% and 30% -->
                     <div class="link-row">
-                        <span class="review-link" data-review="review-1">Review 1</span>
+                        <span class="review-link" data-review="review-1" style="transform: translateY(35px);">REVIEW 1</span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row"></div>
@@ -974,7 +999,7 @@
                     <div class="link-row"></div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ Reach out to <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering</a> for a ROM proposal on Slack <strong>#missions-sales-engineering</strong></span>
+                        <span class="stage-action" style="transform: translateY(35px); display: inline-block;">→ Reach out to <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering</a> for a ROM proposal on Slack <strong>#missions-sales-engineering</strong></span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row"></div>
@@ -983,20 +1008,20 @@
         </div>
 
         <!-- Sales Phase -->
-        <div class="phase-section sales-phase">
+        <div class="phase-section phase-2">
             <div class="phase-content">
                 <div class="phase-column">
                     <div class="phase-badge">
                         <span class="phase-badge-icon">2</span>
                         <div class="phase-badge-text">
-                            <span class="phase-badge-title">Sales</span>
-                            <span class="phase-badge-meta">6-12 months<br>Sales led, Sales Eng. & Product supporting</span>
+                            <span class="phase-badge-title">SALES</span>
+                            <span class="phase-badge-meta">6–12 months<br>Sales led, Sales Eng. & Product supporting</span>
                         </div>
                     </div>
                 </div>
                 <div class="stages-column">
                     <div class="stage-row">
-                        <div class="stage" data-maturity="40" data-stage="rfp-released">
+                        <div class="stage" data-maturity="40" data-stage="rfp-released" data-phase="2">
                             <div class="stage-bar">
                                 RFP Released
                                 <span class="maturity-badge">40%</span>
@@ -1005,7 +1030,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="45" data-stage="rfp-submitted">
+                        <div class="stage" data-maturity="45" data-stage="rfp-submitted" data-phase="2">
                             <div class="stage-bar">
                                 RFP Submitted
                                 <span class="maturity-badge">45%</span>
@@ -1014,7 +1039,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="60" data-stage="iceye-selected">
+                        <div class="stage" data-maturity="60" data-stage="iceye-selected" data-phase="2">
                             <div class="stage-bar">
                                 ICEYE Selected
                                 <span class="maturity-badge">60%</span>
@@ -1023,8 +1048,9 @@
                     </div>
                 </div>
                 <div class="reviews-column">
+                    <!-- Review 2: between 40% and 45% -->
                     <div class="link-row">
-                        <span class="review-link" data-review="review-2">Review 2</span>
+                        <span class="review-link" data-review="review-2" style="transform: translateY(35px);">REVIEW 2</span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row"></div>
@@ -1046,20 +1072,20 @@
         </div>
 
         <!-- Negotiations Phase -->
-        <div class="phase-section nego-phase">
+        <div class="phase-section phase-3">
             <div class="phase-content">
                 <div class="phase-column">
                     <div class="phase-badge">
                         <span class="phase-badge-icon">3</span>
                         <div class="phase-badge-text">
-                            <span class="phase-badge-title">Negotiations</span>
-                            <span class="phase-badge-meta">2-6 months<br>Program & Sales led</span>
+                            <span class="phase-badge-title">NEGOTIATIONS</span>
+                            <span class="phase-badge-meta">2–6 months<br>Program & Sales led</span>
                         </div>
                     </div>
                 </div>
                 <div class="stages-column">
                     <div class="stage-row">
-                        <div class="stage" data-maturity="70" data-stage="hot-agreed">
+                        <div class="stage" data-maturity="70" data-stage="hot-agreed" data-phase="3">
                             <div class="stage-bar">
                                 Heads of Terms Agreed
                                 <span class="maturity-badge">70%</span>
@@ -1068,7 +1094,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="80" data-stage="negotiations-underway">
+                        <div class="stage" data-maturity="80" data-stage="negotiations-underway" data-phase="3">
                             <div class="stage-bar">
                                 Negotiations Underway
                                 <span class="maturity-badge">80%</span>
@@ -1077,7 +1103,7 @@
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
-                        <div class="stage" data-maturity="100" data-stage="contract-signed">
+                        <div class="stage" data-maturity="100" data-stage="contract-signed" data-phase="3">
                             <div class="stage-bar">
                                 Contract Signed
                                 <span class="maturity-badge">100%</span>
@@ -1088,8 +1114,9 @@
                 <div class="reviews-column">
                     <div class="link-row"></div>
                     <div class="link-spacer"></div>
+                    <!-- Contract Approval: between 80% and 100% -->
                     <div class="link-row">
-                        <span class="review-link" data-review="contract-approval">Contract Approval</span>
+                        <span class="review-link" data-review="contract-approval" style="transform: translateY(35px);">CONTRACT APPROVAL</span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row"></div>
@@ -1106,9 +1133,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <svg class="footer-logo" viewBox="0 0 100 24" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="18" font-family="'Instrument Sans', sans-serif" font-size="18" font-weight="700" letter-spacing="2" fill="#64748B">ICEYE</text>
-            </svg>
+            <span class="footer-wordmark">ICEYE</span>
             <span>PROPRIETARY AND CONFIDENTIAL</span>
         </footer>
     </div>
@@ -1262,19 +1287,19 @@
 
         const classificationData = {
             'baseline': {
-                title: 'Baseline (B)',
+                title: 'BASELINE (B)',
                 headerClass: 'baseline-header',
                 description: 'Things we can deliver today',
                 example: 'E.g. Gen-3.5\'s at standard pricing'
             },
             'delta-green': {
-                title: 'Delta Green (DG)',
+                title: 'DELTA GREEN (DG)',
                 headerClass: 'delta-green-header',
                 description: 'Things we don\'t have today, but are planning soon in the roadmap',
                 example: 'E.g. Gen-4\'s in small numbers, at standard pricing, AIT in-country but on the global expansion plan'
             },
             'delta-red': {
-                title: 'Delta Red (DR)',
+                title: 'DELTA RED (DR)',
                 headerClass: 'delta-red-header',
                 description: 'Things we don\'t have today, and would need to change the roadmap to deliver',
                 example: 'E.g. Any non-standard offers, new sensors/orbits/launchers, Gen-4\'s in big numbers, AIT in a new country not on the global expansion plan'
@@ -1321,26 +1346,25 @@
                     stageTooltipTitle.textContent = data.title;
                     stageTooltipMaturity.textContent = data.maturity;
                     stageTooltipContent.innerHTML = `
-                        <div class="criteria-title">Stage Criteria</div>
+                        <div class="criteria-title">STAGE CRITERIA</div>
                         ${data.criteria.map(c => `<div class="criteria-item">${c}</div>`).join('')}
                     `;
                     
-                    // Set header color based on phase (maturity percentage)
+                    // Set header color based on phase and maturity
                     const maturity = parseInt(stage.dataset.maturity);
+                    const phase = stage.dataset.phase;
                     const header = stageTooltip.querySelector('.stage-tooltip-header');
                     header.className = 'stage-tooltip-header';
-                    stageTooltip.classList.remove('sales-phase', 'nego-phase', 'success-phase');
+                    
                     if (maturity === 100) {
                         header.classList.add('success-header');
-                        stageTooltip.classList.add('success-phase');
-                    } else if (maturity >= 70) {
-                        header.classList.add('nego-header');
-                        stageTooltip.classList.add('nego-phase');
-                    } else if (maturity >= 40) {
-                        header.classList.add('sales-header');
-                        stageTooltip.classList.add('sales-phase');
+                    } else if (phase === '1') {
+                        header.classList.add('phase-1-header');
+                    } else if (phase === '2') {
+                        header.classList.add('phase-2-header');
+                    } else if (phase === '3') {
+                        header.classList.add('phase-3-header');
                     }
-                    // 0-30% keeps default teal color
                     
                     // Position the tooltip near the stage
                     const rect = stage.getBoundingClientRect();
@@ -1393,9 +1417,9 @@
                     if (data.hasClassification) {
                         html += `
                             <div class="classification-tags">
-                                <span class="tag tag-baseline" data-classification="baseline">Baseline (B)</span>
-                                <span class="tag tag-delta-green" data-classification="delta-green">Delta Green (DG)</span>
-                                <span class="tag tag-delta-red" data-classification="delta-red">Delta Red (DR)</span>
+                                <span class="tag tag-baseline" data-classification="baseline">BASELINE (B)</span>
+                                <span class="tag tag-delta-green" data-classification="delta-green">DELTA GREEN (DG)</span>
+                                <span class="tag tag-delta-red" data-classification="delta-red">DELTA RED (DR)</span>
                             </div>
                         `;
                     }
