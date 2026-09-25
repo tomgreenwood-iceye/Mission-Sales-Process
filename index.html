@@ -122,13 +122,8 @@
             flex: 1;
         }
 
-        .column-heading.reviews-heading {
-            width: 140px;
-            flex-shrink: 0;
-        }
-
         .column-heading.actions-heading {
-            width: 280px;
+            width: 440px;
             flex-shrink: 0;
         }
 
@@ -264,15 +259,8 @@
             flex: 1;
         }
 
-        .reviews-column {
-            width: 140px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
         .actions-column {
-            width: 280px;
+            width: 440px;
             flex-shrink: 0;
             display: flex;
             flex-direction: column;
@@ -383,8 +371,11 @@
         }
 
         /* Links column items */
+        /* Fixed height keeps each action locked to its stage bar; text taller than
+           the row overflows into the surrounding gaps instead of shifting rows below. */
         .link-row {
-            min-height: 40px;
+            height: 40px;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -392,8 +383,16 @@
             gap: 4px;
         }
 
+        /* The last row has no row beneath it to keep aligned, so it grows with its
+           text rather than overflowing past the bottom of the phase section. */
+        .actions-column .link-row:last-child {
+            height: auto;
+            min-height: 40px;
+        }
+
         .link-spacer {
-            min-height: 24px;
+            height: 24px;
+            flex-shrink: 0;
         }
 
         .stage-action {
@@ -413,6 +412,11 @@
 
         .stage-action a:hover {
             color: var(--iceye-cyan-tint-1);
+        }
+
+        /* A link inside emphasised text follows that text's weight instead of its own. */
+        .stage-action strong a {
+            font-weight: inherit;
         }
 
         /* Review Link - Pulsar (alert gate) */
@@ -888,7 +892,6 @@
                 gap: 20px;
             }
             
-            .reviews-column,
             .actions-column {
                 width: 100%;
                 flex-direction: row;
@@ -928,8 +931,7 @@
         <div class="column-headings">
             <div class="column-heading phase-heading">PHASE</div>
             <div class="column-heading stage-heading">STAGE</div>
-            <div class="column-heading reviews-heading">REVIEWS</div>
-            <div class="column-heading actions-heading">ACTIONS</div>
+            <div class="column-heading actions-heading">ACTIONS REQUIRED BY SALES</div>
         </div>
 
         <!-- Business Development Phase -->
@@ -981,33 +983,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="reviews-column">
-                    <!-- Review 0: positioned above 0% -->
-                    <div class="link-row">
-                        <span class="review-link" data-review="review-0" style="transform: translateY(-32px);">REVIEW 0</span>
-                    </div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
-                    <div class="link-spacer"></div>
-                    <!-- Review 1: between 15% and 30% -->
-                    <div class="link-row">
-                        <span class="review-link" data-review="review-1" style="transform: translateY(32px);">REVIEW 1</span>
-                    </div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
-                </div>
                 <div class="actions-column">
                     <div class="link-row">
-                        <span class="stage-action">→ Sales lead enters the deal into Salesforce</span>
+                        <span class="stage-action">→ <strong>Sales director enters the deal into Salesforce.</strong> This should be done as soon as the potential opportunity arises.</span>
                     </div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action" style="transform: translateY(32px); display: inline-block;">→ Reach out to <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering</a> for a ROM proposal on Slack <strong>#missions-sales-engineering</strong></span>
+                        <span class="stage-action">→ Sales director should be building a relationship with the customer as a trusted advisor. This is when we have the <strong>biggest opportunity to influence the tender</strong>.</span>
                     </div>
                     <div class="link-spacer"></div>
-                    <div class="link-row"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ At this stage, sales directors should be aiming to receive some kind of confirmation from the customer (written or verbal) that they would be <strong>willing to do business with ICEYE</strong>.</span>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ <strong>Reach out to the <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering team</a></strong> for a proposal. Message <a href="https://iceye.slack.com/archives/C07MR91MFT4" target="_blank">#missions-sales-engineering</a> and tag <a href="https://iceye.slack.com/admin/user_groups" target="_blank">@team-missionssalesengineering</a> to ping the full team at once. What they need to know: Customer and context, Request type and details, and Timeline.</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1052,25 +1043,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="reviews-column">
-                    <!-- Review 2: between 40% and 45% -->
-                    <div class="link-row">
-                        <span class="review-link" data-review="review-2" style="transform: translateY(32px);">REVIEW 2</span>
-                    </div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
-                </div>
                 <div class="actions-column">
                     <div class="link-row">
-                        <span class="stage-action">→ <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5172691226/Mission+Sales+Engineering" target="_blank">Sales Engineering</a> proposal process to be followed (bid/no-bid)</span>
+                        <span class="stage-action">→ <strong>Work closely with the <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5172691226/Mission+Sales+Engineering" target="_blank">Sales Engineering team</a></strong> and follow their proposal bid/no-bid process. Make sure to include the Program Management team closely here too.</span>
                     </div>
                     <div class="link-spacer"></div>
-                    <div class="link-row"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ Use this time to align with support functions to secure their time and plan in some time for negotiations. (E.g. Legal, Finance, Program Management)</span>
+                    </div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ <a href="https://docs.google.com/document/d/1qGsrEIFbicIoYI9M9Jqeu6SBC1olKyIkamdH5wWs-yo/edit?usp=drive_link" target="_blank">Close process triggered</a> — sales lead is responsible</span>
+                        <span class="stage-action">→ <strong>Sales director is responsible for triggering the close process.</strong> This must be done as soon as we learn that ICEYE was selected. It includes things like appointing a DRI, planning internal and external negotiation timelines, aligning on heads of terms etc. <a href="https://docs.google.com/document/d/1qGsrEIFbicIoYI9M9Jqeu6SBC1olKyIkamdH5wWs-yo/edit?usp=drive_link" target="_blank">The full process is here</a>.</span>
                     </div>
                 </div>
             </div>
@@ -1116,23 +1099,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="reviews-column">
-                    <div class="link-row"></div>
-                    <div class="link-spacer"></div>
-                    <!-- Contract Approval: between 80% and 100% -->
+                <div class="actions-column">
                     <div class="link-row">
-                        <span class="review-link" data-review="contract-approval" style="transform: translateY(32px);">CONTRACT APPROVAL</span>
+                        <span class="stage-action">→ <strong>Work closely with the Legal team on HOT to focus the customer</strong> on price, timeline, scope and important T&amp;Cs without reviewing a 50+ page contract. Satellite tail numbers are assigned at this stage.</span>
                     </div>
                     <div class="link-spacer"></div>
-                    <div class="link-row"></div>
-                </div>
-                <div class="actions-column">
-                    <div class="link-row"></div>
-                    <div class="link-spacer"></div>
-                    <div class="link-row"></div>
+                    <div class="link-row">
+                        <span class="stage-action">→ <strong>Issue the draft contract quickly.</strong> Host the negotiation KO and agree with the customer early on a clear negotiation schedule. Follow as closely as possible and close out all ICEYE actions &lt;48hrs.</span>
+                    </div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ <a href="https://docs.google.com/document/d/1-EM82dpNbvEp6HCvwWHK4GHjrCdLQRJzWEdhnXEjRTg/edit?usp=sharing" target="_blank">Lessons Learnt process</a> triggered and executed within weeks following contract signature</span>
+                        <span class="stage-action">→ <a href="https://docs.google.com/document/d/1-EM82dpNbvEp6HCvwWHK4GHjrCdLQRJzWEdhnXEjRTg/edit?usp=sharing" target="_blank">Lessons Learned process</a> triggered and executed within weeks following contract signature. <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5331583247/Missions+Sales+Process#Lessons-Learnt" target="_blank">All ICEYE Missions lessons learned docs can be found here</a>.</span>
                     </div>
                 </div>
             </div>
@@ -1186,8 +1163,8 @@
                 title: 'Business development',
                 maturity: '0%',
                 criteria: [
-                    'Sales leader is actively assessing whether a customer is aware of their need',
-                    'Sales leader is assessing whether the customer is aware of ICEYE\'s capabilities'
+                    'Sales director is actively assessing whether a customer is aware of their need',
+                    'Sales director is assessing whether the customer is aware of ICEYE\'s capabilities'
                 ]
             },
             'customer-identified-need': {
@@ -1202,15 +1179,14 @@
                 title: 'Customer has qualified ICEYE',
                 maturity: '15%',
                 criteria: [
-                    'Sales leader has formed a relationship with customer',
-                    'Sales leader has briefed them in depth about ICEYE\'s capabilities'
+                    'Sales director has formed a relationship with customer',
+                    'Sales director has briefed them in depth about ICEYE\'s capabilities'
                 ]
             },
             'evaluation': {
                 title: 'Evaluation',
                 maturity: '30%',
                 criteria: [
-                    'Deal Review has been completed',
                     'Customer is actively requesting a budget and indicating an intent to procure',
                     'Customer has defined their high-level requirements'
                 ]
@@ -1264,7 +1240,7 @@
             'review-0': {
                 title: 'Review 0',
                 details: [
-                    { label: 'Completed by:', value: 'Sales Leader' },
+                    { label: 'Completed by:', value: 'Sales Director' },
                     { label: 'Pass Criteria:', value: 'Deal is recognised as a real opportunity worth pursuing' },
                     { label: 'Results in:', value: 'Salesforce Pipeline Entry', highlight: true }
                 ]
