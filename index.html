@@ -283,6 +283,48 @@
             transform: translateX(4px);
         }
 
+        .stage-with-arrow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .close-process-stage-arrow {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            height: 28px;
+            padding: 0 2px;
+            border: none;
+            background: transparent;
+            color: var(--iceye-cyan-tint-1);
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .close-process-stage-arrow-icon {
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .close-process-stage-arrow-label {
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .close-process-stage-arrow:hover {
+            color: var(--iceye-night-black);
+            transform: translateX(3px);
+        }
+
         .stage-bar {
             position: relative;
             height: 40px;
@@ -472,6 +514,275 @@
             animation: popupIn 0.2s ease;
             overflow: hidden;
             z-index: 1001;
+        }
+
+        /* Close Process panel — wider variant of the shared popup shell */
+        .popup.close-process-popup {
+            max-width: 1100px;
+            width: min(1100px, calc(100vw - 48px));
+            max-height: calc(100vh - 48px);
+            height: calc(100vh - 48px);
+            display: flex;
+            flex-direction: column;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .popup.close-process-popup .popup-content {
+            overflow-y: auto;
+            flex: 1;
+            min-height: 0;
+            padding: 28px 32px;
+        }
+
+        .popup.close-process-popup .popup-header {
+            padding: 18px 32px;
+        }
+
+        .close-process-intro {
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+            margin-bottom: 16px;
+        }
+
+        .popup-content h3.close-process-step {
+            font-family: var(--font-primary);
+            font-size: 22px;
+            line-height: 28px;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: -0.03em;
+            color: var(--iceye-night-black);
+            margin: 24px 0 12px;
+        }
+
+        .close-process-step-intro {
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+            margin: 0 0 16px;
+        }
+
+        .close-process-rules {
+            list-style: none;
+            margin: 0 0 16px;
+            padding: 0;
+        }
+
+        .close-process-rule {
+            position: relative;
+            padding: 10px 0 10px 24px;
+            border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+        }
+
+        .close-process-rule:last-child {
+            border-bottom: none;
+        }
+
+        .close-process-rule::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            width: 8px;
+            height: 8px;
+            background: var(--iceye-cyan-tint-1);
+            border-radius: 2px;
+        }
+
+        .close-process-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 19px;
+        }
+
+        .close-process-table th {
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+            color: var(--iceye-night-black-tint-1);
+            padding: 8px 10px 8px 0;
+            border-bottom: 1px solid rgba(34, 34, 34, 0.12);
+        }
+
+        .close-process-table td {
+            padding: 10px 10px 10px 0;
+            border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+            color: var(--iceye-night-black);
+            vertical-align: top;
+        }
+
+        .close-process-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .close-process-table .col-category {
+            width: 22%;
+            font-weight: 500;
+            vertical-align: top;
+        }
+
+        .close-process-table tr.category-start td {
+            border-top: 1px solid rgba(34, 34, 34, 0.18);
+        }
+
+        .close-process-table tbody tr:first-child td {
+            border-top: none;
+        }
+
+        .close-process-table .col-role {
+            width: 34%;
+        }
+
+        .close-process-table .col-timing {
+            width: 22%;
+            color: var(--iceye-night-black-tint-1);
+            font-family: var(--font-accent);
+            font-size: 11px;
+            line-height: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .close-process-table .col-gantt {
+            width: 38%;
+            min-width: 220px;
+            padding-right: 12px;
+        }
+
+        .close-process-table .col-owner {
+            width: 22%;
+            font-weight: 500;
+        }
+
+        .close-process-table.gantt-table th.col-action,
+        .close-process-table.gantt-table td.col-action {
+            width: 40%;
+        }
+
+        /* Step 3 countdown Gantt — weeks relative to contract signature */
+        .gantt-axis {
+            position: relative;
+            height: 22px;
+            margin-bottom: 2px;
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: var(--iceye-night-black-tint-1);
+        }
+
+        .gantt-axis-label {
+            position: absolute;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .gantt-axis-label:first-child {
+            transform: translateX(0);
+        }
+
+        .gantt-axis-label:last-child {
+            transform: translateX(-100%);
+        }
+
+        .gantt-track {
+            position: relative;
+            height: 28px;
+            background: var(--iceye-platinum);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .gantt-guide {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(34, 34, 34, 0.12);
+            transform: translateX(-50%);
+        }
+
+        .gantt-guide.signature-guide {
+            background: var(--iceye-pulsar-red);
+            width: 2px;
+        }
+
+        .gantt-span {
+            position: absolute;
+            top: 8px;
+            height: 12px;
+            background: var(--iceye-cyan);
+            border-radius: 2px;
+            min-width: 4px;
+        }
+
+        .gantt-point {
+            position: absolute;
+            top: 50%;
+            width: 10px;
+            height: 10px;
+            margin-left: -5px;
+            margin-top: -5px;
+            border-radius: 2px;
+            background: var(--iceye-cyan-tint-1);
+            box-shadow: 0 0 0 2px var(--iceye-platinum);
+        }
+
+        .gantt-point.signature {
+            width: 12px;
+            height: 12px;
+            margin-left: -6px;
+            margin-top: -6px;
+            background: var(--iceye-pulsar-red);
+            border-radius: 3px;
+            box-shadow: none;
+        }
+
+        .gantt-point.post {
+            background: var(--iceye-night-black-tint-1);
+        }
+
+        .gantt-sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .close-process-footer {
+            margin-top: 4px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(34, 34, 34, 0.1);
+            font-size: 14px;
+            line-height: 19px;
+        }
+
+        .close-process-footer a {
+            color: var(--iceye-cyan-tint-1);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .close-process-footer a:hover {
+            color: var(--iceye-night-black);
         }
 
         @keyframes popupIn {
@@ -1036,9 +1347,15 @@
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
                         <div class="stage" data-maturity="60" data-stage="iceye-selected" data-phase="2">
-                            <div class="stage-bar">
-                                ICEYE selected
-                                <span class="maturity-badge">60%</span>
+                            <div class="stage-with-arrow">
+                                <div class="stage-bar">
+                                    ICEYE selected
+                                    <span class="maturity-badge">60%</span>
+                                </div>
+                                <button type="button" class="close-process-stage-arrow" data-close-process aria-label="Open Missions Close Process">
+                                    <span class="close-process-stage-arrow-icon">→</span>
+                                    <span class="close-process-stage-arrow-label">Close process</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1053,7 +1370,7 @@
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ <strong>Sales director is responsible for triggering the close process.</strong> This must be done as soon as we learn that ICEYE was selected. It includes things like appointing a DRI, planning internal and external negotiation timelines, aligning on heads of terms etc. <a href="https://docs.google.com/document/d/1qGsrEIFbicIoYI9M9Jqeu6SBC1olKyIkamdH5wWs-yo/edit?usp=drive_link" target="_blank">The full process is here</a>.</span>
+                        <span class="stage-action">→ <a href="#" class="close-process-trigger" data-close-process><strong>Sales director is responsible for triggering the close process.</strong></a> This must be done as soon as we learn that ICEYE was selected.</span>
                     </div>
                 </div>
             </div>
@@ -1294,6 +1611,106 @@
             }
         };
 
+        const closeProcessData = {
+            title: 'Missions Close Process',
+            intro: 'The close process is triggered when a deal reaches the \'ICEYE Selected\' stage of the sales process. The sales director/manager is responsible for following the steps outlined here to drive the deal towards a swift closure. Each mission is unique, but by following this proven standardised approach, we can shrink the negotiations from a long drawn-out process to a concise well-planned win.',
+            rules: [
+                'ICEYE activities should always be turned around within 48 hours',
+                'ICEYE is never the organization to slow down the process',
+                'The Close DRI is the owner of the process and is overall responsible for maintaining seamless coordination and communication among the close team.'
+            ],
+            roles: [
+                { category: 'Close DRI', role: 'Directly responsible for driving the coordination of the closure', who: 'Sales Lead or Program Manager' },
+                { category: 'Coordinators', role: 'Sales Lead', who: 'Sales Director / Manager' },
+                { category: 'Coordinators', role: 'Program/Delivery Lead', who: 'Program Manager' },
+                { category: 'Contributors', role: 'Legal Lead', who: 'Associate General Counsel (Commercial)' },
+                { category: 'Contributors', role: 'Finance Lead', who: 'VP Finance / LoB Finance Partner' },
+                { category: 'Contributors', role: 'Sales Engineering Lead', who: 'Sales Engineering' },
+                { category: 'Contributors', role: 'Product Lead', who: 'Product Management (as needed)' },
+                { category: 'Contributors', role: 'Engineering Lead', who: 'Engineering (as needed)' },
+                { category: 'Approvers', role: 'Commercial Approver', who: 'Head of Missions Commercial' },
+                { category: 'Approvers', role: 'Technical Approver', who: 'Head of Missions LoB' }
+            ],
+            step2Steps: [
+                { action: '2.1 Set up Google Drive', timing: '<24h after ICEYE Selected', owner: 'Close DRI' },
+                { action: '2.2 Set up Slack Channel', timing: '<24h after ICEYE Selected', owner: 'Close DRI' },
+                { action: '2.3 Organize internal kick-off meeting', timing: '<72h after ICEYE Selected', owner: 'Close DRI' },
+                { action: '2.4 Set up internal close meeting cadence', timing: '<72h after ICEYE Selected', owner: 'Close DRI' }
+            ],
+            // Gantt domain: weeks relative to signature (−10 → +1.5)
+            ganttDomain: { min: -10, max: 1.5 },
+            ganttMilestones: [
+                { at: -10, label: '−10w' },
+                { at: -8, label: '−8w' },
+                { at: -6, label: '−6w' },
+                { at: -1, label: '−1w' },
+                { at: 0, label: 'T=0', signature: true },
+                { at: 1, label: 'Post' }
+            ],
+            step3Steps: [
+                {
+                    action: '3.1 Define Heads of Terms (HOT) with customer (scope, requirements and pricing)',
+                    owner: 'Close DRI',
+                    label: '4-week period from signature minus 10 weeks to minus 6 weeks',
+                    gantt: { type: 'span', from: -10, to: -6 }
+                },
+                {
+                    action: '3.2 Agree Heads of Terms (HOT)',
+                    owner: 'Close DRI',
+                    label: 'Signature minus 6 weeks',
+                    gantt: { type: 'point', at: -6 }
+                },
+                {
+                    action: '3.3 Schedule customer negotiation meetings',
+                    owner: 'Close DRI',
+                    label: '1-week block at signature minus 8 weeks',
+                    gantt: { type: 'span', from: -8, to: -7 }
+                },
+                {
+                    action: '3.4 Customer negotiation meeting KO',
+                    owner: 'Close DRI',
+                    label: 'Signature minus 6 weeks',
+                    gantt: { type: 'point', at: -6 }
+                },
+                {
+                    action: '3.5 Subsequent customer negotiation meeting(s)',
+                    owner: 'Close DRI',
+                    label: 'Six weekly meetings from signature minus 6 weeks to closure',
+                    gantt: { type: 'points', at: [-6, -5, -4, -3, -2, -1] }
+                },
+                {
+                    action: '3.6 Align with and inform additional ICEYE teams',
+                    owner: 'Close DRI',
+                    label: 'Weekly from signature minus 6 weeks to closure',
+                    gantt: { type: 'span', from: -6, to: 0 }
+                },
+                {
+                    action: '3.7 Populate contract summary and approval sheet',
+                    owner: 'Legal',
+                    label: 'Signature minus 1 week',
+                    gantt: { type: 'point', at: -1 }
+                },
+                {
+                    action: '3.8 Exchange contracts and sign',
+                    owner: 'Legal',
+                    label: '1-week block ending at T=0',
+                    gantt: { type: 'span', from: -1, to: 0 }
+                },
+                {
+                    action: '3.9 Contract signature ceremony',
+                    owner: 'ICEYE and Customer signatories',
+                    label: 'T=0 Contract signature ceremony',
+                    gantt: { type: 'point', at: 0, marker: 'signature' }
+                },
+                {
+                    action: '3.10 Internal program kickoff',
+                    owner: 'Program Manager',
+                    label: 'Post signature',
+                    gantt: { type: 'point', at: 1, marker: 'post' }
+                }
+            ]
+        };
+
         const popupOverlay = document.getElementById('popup-overlay');
         const popup = document.getElementById('popup');
         const popupTitle = document.getElementById('popup-title');
@@ -1329,6 +1746,7 @@
         document.querySelectorAll('.stage').forEach(stage => {
             stage.addEventListener('mouseenter', (e) => {
                 if (e.target.tagName === 'A') return;
+                if (e.target.closest('[data-close-process]')) return;
                 const data = stageCriteria[stage.dataset.stage];
                 if (data) {
                     stageTooltipTitle.textContent = data.title;
@@ -1390,7 +1808,8 @@
                 e.stopPropagation();
                 const data = reviewData[link.dataset.review];
                 if (data) {
-                    popup.classList.remove('classification-popup');
+                    popup.classList.remove('classification-popup', 'close-process-popup');
+                    popup.style.transform = '';
                     popup.querySelector('.popup-header').className = 'popup-header review-header';
                     popupMaturity.style.display = 'none';
                     popupTitle.textContent = data.title;
@@ -1473,9 +1892,163 @@
             classificationTooltip.classList.remove('visible');
         }
 
-        popupClose.addEventListener('click', () => popupOverlay.classList.remove('active'));
-        popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) popupOverlay.classList.remove('active'); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popupOverlay.classList.remove('active'); });
+        function closePopup() {
+            popupOverlay.classList.remove('active');
+            popup.classList.remove('close-process-popup', 'classification-popup');
+            popup.style.left = '';
+            popup.style.top = '';
+            popup.style.transform = '';
+        }
+
+        function openCloseProcessPanel() {
+            popup.classList.remove('classification-popup');
+            popup.classList.add('close-process-popup');
+            popup.querySelector('.popup-header').className = 'popup-header';
+            popupMaturity.style.display = 'none';
+            popupTitle.textContent = closeProcessData.title;
+
+            // Group consecutive roles by category so the label appears once (rowspan).
+            const roleGroups = [];
+            closeProcessData.roles.forEach(r => {
+                const last = roleGroups[roleGroups.length - 1];
+                if (last && last.category === r.category) {
+                    last.rows.push(r);
+                } else {
+                    roleGroups.push({ category: r.category, rows: [r] });
+                }
+            });
+
+            const rolesRows = roleGroups.map(group =>
+                group.rows.map((r, i) => `
+                    <tr class="${i === 0 ? 'category-start' : ''}">
+                        ${i === 0 ? `<td class="col-category" rowspan="${group.rows.length}">${group.category}</td>` : ''}
+                        <td class="col-role">${r.role}</td>
+                        <td>${r.who}</td>
+                    </tr>
+                `).join('')
+            ).join('');
+
+            const renderStepsRows = (steps) => steps.map(s => `
+                <tr>
+                    <td>${s.action}</td>
+                    <td class="col-timing">${s.timing}</td>
+                    <td class="col-owner">${s.owner}</td>
+                </tr>
+            `).join('');
+
+            const ganttPct = (week) => {
+                const { min, max } = closeProcessData.ganttDomain;
+                return ((week - min) / (max - min)) * 100;
+            };
+
+            const renderGanttGuides = () => closeProcessData.ganttMilestones.map(m => `
+                <span class="gantt-guide ${m.signature ? 'signature-guide' : ''}" style="left: ${ganttPct(m.at)}%;"></span>
+            `).join('');
+
+            const renderGanttAxis = () => `
+                <div class="gantt-axis" aria-hidden="true">
+                    ${closeProcessData.ganttMilestones.map(m => `
+                        <span class="gantt-axis-label" style="left: ${ganttPct(m.at)}%;">${m.label}</span>
+                    `).join('')}
+                </div>
+            `;
+
+            const renderGanttCell = (step) => {
+                const guides = renderGanttGuides();
+                let mark = '';
+                if (step.gantt.type === 'span') {
+                    const left = ganttPct(step.gantt.from);
+                    const width = ganttPct(step.gantt.to) - left;
+                    mark = `<span class="gantt-span" style="left: ${left}%; width: ${width}%;"></span>`;
+                } else if (step.gantt.type === 'points') {
+                    mark = step.gantt.at.map(week =>
+                        `<span class="gantt-point" style="left: ${ganttPct(week)}%;"></span>`
+                    ).join('');
+                } else {
+                    const markerClass = step.gantt.marker ? ` ${step.gantt.marker}` : '';
+                    mark = `<span class="gantt-point${markerClass}" style="left: ${ganttPct(step.gantt.at)}%;"></span>`;
+                }
+                return `
+                    <td class="col-gantt">
+                        <span class="gantt-sr-only">${step.label}</span>
+                        <div class="gantt-track" aria-hidden="true">${guides}${mark}</div>
+                    </td>
+                `;
+            };
+
+            const renderStep3GanttRows = (steps) => steps.map(s => `
+                <tr>
+                    <td class="col-action">${s.action}</td>
+                    ${renderGanttCell(s)}
+                    <td class="col-owner">${s.owner}</td>
+                </tr>
+            `).join('');
+
+            const step2Rows = renderStepsRows(closeProcessData.step2Steps);
+            const step3Rows = renderStep3GanttRows(closeProcessData.step3Steps);
+
+            popupContent.innerHTML = `
+                <p class="close-process-intro">${closeProcessData.intro}</p>
+                <h3 class="close-process-step">Step 1 — Assign close team roles</h3>
+                <p class="close-process-step-intro">The first activity is to assign the close team. The Sales leader, in very close coordination with the Program Manager, should assign an individual to each of the roles below, ensuring that the nominated person(s) meet the relevant security clearances for the individual deal.</p>
+                <table class="close-process-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Role</th>
+                            <th>Who</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rolesRows}</tbody>
+                </table>
+                <h3 class="close-process-step">Step 2 — Coordinate internally</h3>
+                <table class="close-process-table">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>Timing</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>${step2Rows}</tbody>
+                </table>
+                <h3 class="close-process-step">Step 3 — Plan the closure timeline</h3>
+                <table class="close-process-table gantt-table">
+                    <thead>
+                        <tr>
+                            <th class="col-action">Action</th>
+                            <th class="col-gantt">
+                                Timeline to signature
+                                ${renderGanttAxis()}
+                            </th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>${step3Rows}</tbody>
+                </table>
+                <h3 class="close-process-step">Key things to remember</h3>
+                <ul class="close-process-rules">
+                    ${closeProcessData.rules.map(rule => `<li class="close-process-rule">${rule}</li>`).join('')}
+                </ul>
+            `;
+
+            popup.style.left = '50%';
+            popup.style.top = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popupOverlay.classList.add('active');
+        }
+
+        document.querySelectorAll('[data-close-process]').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openCloseProcessPanel();
+            });
+        });
+
+        popupClose.addEventListener('click', closePopup);
+        popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) closePopup(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
     </script>
 </body>
 </html>
