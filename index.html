@@ -49,7 +49,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1320px;
             margin: 0 auto;
             padding: 36px 40px;
         }
@@ -124,6 +124,11 @@
 
         .column-heading.actions-heading {
             width: 440px;
+            flex-shrink: 0;
+        }
+
+        .column-heading.meddicc-heading {
+            width: 120px;
             flex-shrink: 0;
         }
 
@@ -437,6 +442,59 @@
             flex-shrink: 0;
         }
 
+        /* MEDDICC column */
+        .meddicc-column {
+            width: 120px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meddicc-column .link-row {
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 6px;
+        }
+
+        .meddicc-letter {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 3px;
+            background: var(--iceye-night-black);
+            color: var(--iceye-stellar-white);
+            font-family: var(--font-accent);
+            font-size: 13px;
+            line-height: 1;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .meddicc-letter:hover,
+        .meddicc-letter:focus-visible {
+            background: var(--iceye-cyan);
+            color: var(--iceye-night-black);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .meddicc-explained-link {
+            color: var(--iceye-cyan-tint-1);
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+
+        .meddicc-explained-link:hover {
+            color: var(--iceye-night-black);
+        }
+
         .stage-action {
             color: var(--iceye-night-black);
             font-size: 14px;
@@ -516,8 +574,9 @@
             z-index: 1001;
         }
 
-        /* Close Process panel — wider variant of the shared popup shell */
-        .popup.close-process-popup {
+        /* Close Process and MEDDICC panels — wider variant of the shared popup shell */
+        .popup.close-process-popup,
+        .popup.meddicc-popup {
             max-width: 1100px;
             width: min(1100px, calc(100vw - 48px));
             max-height: calc(100vh - 48px);
@@ -529,15 +588,87 @@
             transform: translate(-50%, -50%);
         }
 
-        .popup.close-process-popup .popup-content {
+        .popup.close-process-popup .popup-content,
+        .popup.meddicc-popup .popup-content {
             overflow-y: auto;
             flex: 1;
             min-height: 0;
             padding: 28px 32px;
         }
 
-        .popup.close-process-popup .popup-header {
+        .popup.close-process-popup .popup-header,
+        .popup.meddicc-popup .popup-header {
             padding: 18px 32px;
+        }
+
+        .popup-content h3.meddicc-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-primary);
+            font-size: 22px;
+            line-height: 28px;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: -0.03em;
+            color: var(--iceye-night-black);
+            margin: 28px 0 6px;
+        }
+
+        .meddicc-section {
+            scroll-margin-top: 28px;
+        }
+
+        .meddicc-section:first-child h3.meddicc-step {
+            margin-top: 0;
+        }
+
+        .meddicc-badge {
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-radius: 3px;
+            background: var(--iceye-night-black);
+            color: var(--iceye-stellar-white);
+            font-family: var(--font-accent);
+            font-size: 15px;
+            letter-spacing: 0;
+        }
+
+        .meddicc-question {
+            font-size: 14px;
+            line-height: 19px;
+            font-style: italic;
+            color: var(--iceye-night-black-tint-1);
+            margin: 0 0 8px 44px;
+        }
+
+        .meddicc-points {
+            list-style: none;
+            margin: 0 0 8px 44px;
+            padding: 0;
+        }
+
+        .meddicc-point {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 24px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+        }
+
+        .meddicc-point:last-child {
+            border-bottom: none;
+        }
+
+        .meddicc-point-title {
+            font-weight: 500;
         }
 
         .close-process-intro {
@@ -1029,6 +1160,9 @@
         .classification-tooltip-header.delta-red-header {
             background: var(--iceye-dark-pulsar);
         }
+        .classification-tooltip-header.meddicc-header {
+            background: var(--iceye-night-black);
+        }
 
         .classification-tooltip-content {
             padding: 16px;
@@ -1039,6 +1173,10 @@
             line-height: 19px;
             color: var(--iceye-night-black);
             margin-bottom: 12px;
+        }
+
+        .classification-tooltip-content p:last-child {
+            margin-bottom: 0;
         }
 
         .classification-tooltip-content .example {
@@ -1203,13 +1341,18 @@
                 gap: 20px;
             }
             
-            .actions-column {
+            .actions-column,
+            .meddicc-column {
                 width: 100%;
                 flex-direction: row;
                 flex-wrap: wrap;
                 gap: 10px;
                 padding-top: 16px;
                 border-top: 1px solid rgba(34, 34, 34, 0.12);
+            }
+
+            .meddicc-column:empty {
+                display: none;
             }
             
             .link-row, .link-spacer {
@@ -1243,6 +1386,7 @@
             <div class="column-heading phase-heading">PHASE</div>
             <div class="column-heading stage-heading">STAGE</div>
             <div class="column-heading actions-heading">ACTIONS REQUIRED BY SALES</div>
+            <div class="column-heading meddicc-heading">MEDDICC</div>
         </div>
 
         <!-- Business Development Phase -->
@@ -1311,6 +1455,27 @@
                         <span class="stage-action">→ <strong>Reach out to the <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5516001782/Materials+-+Mission+Sales+Engineering" target="_blank">Sales Engineering team</a></strong> for a proposal. Message <a href="https://iceye.slack.com/archives/C07MR91MFT4" target="_blank">#missions-sales-engineering</a> and tag <a href="https://iceye.slack.com/admin/user_groups" target="_blank">@team-missionssalesengineering</a> to ping the full team at once. What they need to know: Customer and context, Request type and details, and Timeline.</span>
                     </div>
                 </div>
+                <div class="meddicc-column">
+                    <div class="link-row">
+                        <a href="#" class="meddicc-explained-link" data-meddicc-explained>MEDDICC explained</a>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <button type="button" class="meddicc-letter" data-meddicc="identify-pain" aria-label="Identify Pain">I</button>
+                        <button type="button" class="meddicc-letter" data-meddicc="competition" aria-label="Competition">C</button>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <button type="button" class="meddicc-letter" data-meddicc="metrics" aria-label="Metrics">M</button>
+                        <button type="button" class="meddicc-letter" data-meddicc="economic-buyer" aria-label="Economic Buyer">E</button>
+                        <button type="button" class="meddicc-letter" data-meddicc="champion" aria-label="Champion">C</button>
+                    </div>
+                    <div class="link-spacer"></div>
+                    <div class="link-row">
+                        <button type="button" class="meddicc-letter" data-meddicc="decision-criteria" aria-label="Decision Criteria">D</button>
+                        <button type="button" class="meddicc-letter" data-meddicc="decision-process" aria-label="Decision Process">D</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1322,7 +1487,7 @@
                         <span class="phase-badge-icon">2</span>
                         <div class="phase-badge-text">
                             <span class="phase-badge-title">SALES</span>
-                            <span class="phase-badge-meta">6–12 months<br>Sales led, Sales Eng. & Product supporting</span>
+                            <span class="phase-badge-meta">3 months<br>Sales led, Sales Eng. & Programs supporting</span>
                         </div>
                     </div>
                 </div>
@@ -1373,6 +1538,7 @@
                         <span class="stage-action">→ <a href="#" class="close-process-trigger" data-close-process><strong>Sales director is responsible for triggering the close process.</strong></a> This must be done as soon as we learn that ICEYE was selected.</span>
                     </div>
                 </div>
+                <div class="meddicc-column"></div>
             </div>
         </div>
 
@@ -1384,7 +1550,7 @@
                         <span class="phase-badge-icon">3</span>
                         <div class="phase-badge-text">
                             <span class="phase-badge-title">NEGOTIATIONS</span>
-                            <span class="phase-badge-meta">2–6 months<br>Program & Sales led</span>
+                            <span class="phase-badge-meta">2 months<br>Program & Sales co-led</span>
                         </div>
                     </div>
                 </div>
@@ -1429,6 +1595,7 @@
                         <span class="stage-action">→ <a href="https://docs.google.com/document/d/1-EM82dpNbvEp6HCvwWHK4GHjrCdLQRJzWEdhnXEjRTg/edit?usp=sharing" target="_blank">Lessons Learned process</a> triggered and executed within weeks following contract signature. <a href="https://iceyedev.atlassian.net/wiki/spaces/PD/pages/5331583247/Missions+Sales+Process#Lessons-Learnt" target="_blank">All ICEYE Missions lessons learned docs can be found here</a>.</span>
                     </div>
                 </div>
+                <div class="meddicc-column"></div>
             </div>
         </div>
 
@@ -1463,6 +1630,12 @@
     <div class="classification-tooltip" id="classification-tooltip">
         <div class="classification-tooltip-header" id="classification-tooltip-header"></div>
         <div class="classification-tooltip-content" id="classification-tooltip-content"></div>
+    </div>
+
+    <!-- MEDDICC Hover Tooltip -->
+    <div class="classification-tooltip" id="meddicc-tooltip">
+        <div class="classification-tooltip-header meddicc-header" id="meddicc-tooltip-header"></div>
+        <div class="classification-tooltip-content" id="meddicc-tooltip-content"></div>
     </div>
 
     <!-- Stage Hover Tooltip -->
@@ -1711,6 +1884,93 @@
             ]
         };
 
+        const meddiccData = {
+            'metrics': {
+                letter: 'M',
+                name: 'Metrics',
+                summary: 'Sales director should understand what success looks like in measurable terms for the customer.',
+                question: 'What does success look like in measurable terms?',
+                points: [
+                    { title: 'Revisit frequency', text: 'From once per 72 hours to 6 times per 24 hours over the priority region of interest. Every missed revisit window is a documented intelligence gap that the customer already feels.' },
+                    { title: 'Sovereign tasking rate', text: '90% of national tier-1 imagery requirements met domestically, without relying on allied access that can be withheld, delayed, or conditioned on policy alignment.' },
+                    { title: 'Time to image', text: 'Confirmed target location with imagery disseminated within 45 minutes of a trigger event.' },
+                    { title: 'Programme delivery milestone', text: 'Full Operational Capability by a specific date tied to a public commitment — National Space Strategy, Defence Command Paper, or a ministerial announcement. If that date slips, someone is responsible.' }
+                ]
+            },
+            'economic-buyer': {
+                letter: 'E',
+                name: 'Economic Buyer',
+                summary: 'Sales director knows precisely who the buyer is.',
+                question: 'Who has ultimate authority to release the budget, and have we spoken to them directly?',
+                points: [
+                    { title: 'Not one person — a board', text: 'Budget authority sits with a Programme Board or Investment Approval Committee. The Director General or 2-star signs; the committee decides. Understand every voting member, not just the chair.' },
+                    { title: 'They have never met you', text: 'Procurement rules insulate the Economic Buyer from vendors at the critical stage. Your intelligence reaches them only through your champion. If your champion cannot brief them persuasively without you in the room, you have no voice where it counts.' },
+                    { title: 'Capital commitment spans spending reviews', text: 'An ICEYE programme is a CDEL commitment across 10–15 years, often spanning two or three spending reviews. The Economic Buyer is signing today for obligations that will outlast their tenure. They need political cover from above.' },
+                    { title: 'Look for the public signal', text: 'If the National Space Strategy, a Defence Command Paper, or a ministerial speech names a sovereign SAR capability, the Economic Buyer has pre-committed publicly. That is your proof of intent — and your leverage if the programme stalls.' }
+                ]
+            },
+            'decision-criteria': {
+                letter: 'D',
+                name: 'Decision Criteria',
+                summary: 'Sales director understands how the decision will be made, and what can be done to influence it.',
+                question: 'What does the customer use to compare options, and do we understand it well enough to influence it?',
+                points: [
+                    { title: 'Sovereignty of tasking', text: 'Can the customer issue a tasking order without ICEYE, an ally, or a third government having to approve it? Operational independence is frequently weighted more heavily than price.' },
+                    { title: 'Export control (ITAR)', text: 'Will US ITAR restrictions limit how and when the customer can use the imagery or the satellite? An ITAR-free solution is a genuine and significant differentiator in this market — make sure the customer understands the difference.' },
+                    { title: 'Industrial participation', text: 'Local content, in-country jobs, technology transfer, and sovereign maintenance capability. For many governments this is a formally scored criterion in the RFP, not a nice-to-have. Understand the percentage requirement early.' },
+                    { title: 'Interoperability', text: 'STANAG 4545 imagery format, compatibility with NATO C2 architecture, integration with existing ground segment. Ask to see the technical requirements document — the real criteria are in there, not in the marketing conversation.' },
+                    { title: 'Security of supply', text: 'Will ICEYE still be operating, financially solvent, and independently owned in 15 years? Ownership structure, financial viability, and supply security are scrutinised for programmes of this sensitivity.' }
+                ]
+            },
+            'decision-process': {
+                letter: 'D',
+                name: 'Decision Process',
+                summary: 'Sales director understands the sequential steps to a signed contract, including the approvals.',
+                question: 'What is the actual sequence of steps to a signed contract, including approvals and procurement?',
+                points: [
+                    { title: 'Where is this in the acquisition lifecycle?', text: 'Concept → Assessment → Demonstration → Manufacture → In-Service → Disposal. Deals that have not reached a funded Assessment phase with an approved Programme Business Case are still ideas. Should we treat them as pipeline?' },
+                    { title: 'Export licence timelines?', text: 'ITAR licence: 6–18 months. National export licences vary by country and technology. If not built into the programme schedule from day one, export licensing becomes a programme-stopper. Raise it early.' },
+                    { title: 'Budget cycle cliff edge', text: 'If a deal is not committed in the current financial year or spending review period, the next realistic window may be 18–36 months away. Know the budget cycle. A deal that misses the window does not pause — it restarts.' },
+                    { title: 'G2G / FMS route risk', text: 'Some governments prefer a Government-to-Government (FMS) route. This can bypass the commercial procurement process entirely.' }
+                ]
+            },
+            'identify-pain': {
+                letter: 'I',
+                name: 'Identify Pain',
+                summary: 'Sales director understands and can articulate the specific business problem that the customer needs to solve.',
+                question: 'What is the specific business problem, who feels it most acutely, and what is the cost of not solving it?',
+                points: [
+                    { title: 'Intelligence gap / allied dependency', text: '“We rely on allied provision for 60% of our tier-1 imagery. That access can be withheld, delayed, or conditioned on policy alignment. It is a national security vulnerability that our own audit has named.”' },
+                    { title: 'No all-weather or night capability', text: '“Our electro-optical constellation is blind in cloud cover and darkness. SAR sees through both. We have documented events we missed because our window opened on cloud. The operational impact is on record.”' },
+                    { title: 'Capacity shortfall', text: '“We have 3x the tasking demand compared to available imaging capacity. Priority intelligence requirements are not being met. We are triaging national intelligence collection.”' },
+                    { title: 'Strategic dependency risk', text: '“Our existing imagery provider was acquired by a foreign entity. We can no longer be confident of unencumbered, sovereign access to tier-1 tasking when it matters most.”' },
+                    { title: 'Political commitment without a programme', text: '“The Minister of Defence publicly committed to a sovereign SAR capability by [year]. We are responsible for delivering against that commitment. We do not currently have a funded programme to do so.”' }
+                ]
+            },
+            'champion': {
+                letter: 'C',
+                name: 'Champion',
+                summary: 'Sales director has a named champion with credibility to motivate decisions in the customer org.',
+                question: 'Who is selling on your behalf internally, and do they have the credibility and motivation to do so?',
+                points: [
+                    { title: 'The rotation problem', text: 'Military postings are typically 2 years. Over a 1–3 year ICEYE sales cycle, you will very likely lose your champion. Rebuilding relationships with a new Programme Manager can cost 12 months.' },
+                    { title: 'What a strong champion looks like', text: 'They present ICEYE capability in internal forums without you present. They can articulate your differentiators in their own words and correct misconceptions in the room. They push back on procurement timelines to protect the programme.' },
+                    { title: 'Build width — not depth with one person', text: 'Before any single stakeholder\'s departure can derail the deal, you need at least 3–4 named relationships at different levels and functions. Who is your alternative if the Programme Manager rotates out next month?' }
+                ]
+            },
+            'competition': {
+                letter: 'C',
+                name: 'Competition',
+                summary: 'Sales director understands who else might be in contention, what our differentiated position is, and whether we are vulnerable.',
+                question: 'Who else is in consideration, what is our differentiated position, and where are we vulnerable?',
+                points: [
+                    { title: 'Direct SAR competition', text: 'Airbus Defence &amp; Space, Capella Space, Umbra. Electro-optical players (Airbus Pléiades Neo, Maxar WorldView) overlap in some use cases. Know each competitor\'s ITAR status, TRL, and track record with government customers of this scale.' },
+                    { title: 'Build vs. buy', text: 'Some nations will always prefer a sovereign build option. If a nationally funded and politically credible domestic programme exists, ICEYE is not in the competition — establish this before investing significant pursuit effort.' },
+                    { title: 'Do nothing / budget reprioritisation', text: 'Defence budgets face constant pressure. The most dangerous competitor is often the decision to redirect capital to a platform (aircraft, ships, vehicles) rather than intelligence infrastructure. The case for investing in collection before commitment must be made explicitly, using the customer\'s own pain.' }
+                ]
+            }
+        };
+
         const popupOverlay = document.getElementById('popup-overlay');
         const popup = document.getElementById('popup');
         const popupTitle = document.getElementById('popup-title');
@@ -1808,7 +2068,7 @@
                 e.stopPropagation();
                 const data = reviewData[link.dataset.review];
                 if (data) {
-                    popup.classList.remove('classification-popup', 'close-process-popup');
+                    popup.classList.remove('classification-popup', 'close-process-popup', 'meddicc-popup');
                     popup.style.transform = '';
                     popup.querySelector('.popup-header').className = 'popup-header review-header';
                     popupMaturity.style.display = 'none';
@@ -1894,14 +2154,14 @@
 
         function closePopup() {
             popupOverlay.classList.remove('active');
-            popup.classList.remove('close-process-popup', 'classification-popup');
+            popup.classList.remove('close-process-popup', 'classification-popup', 'meddicc-popup');
             popup.style.left = '';
             popup.style.top = '';
             popup.style.transform = '';
         }
 
         function openCloseProcessPanel() {
-            popup.classList.remove('classification-popup');
+            popup.classList.remove('classification-popup', 'meddicc-popup');
             popup.classList.add('close-process-popup');
             popup.querySelector('.popup-header').className = 'popup-header';
             popupMaturity.style.display = 'none';
@@ -2043,6 +2303,94 @@
                 e.preventDefault();
                 e.stopPropagation();
                 openCloseProcessPanel();
+            });
+        });
+
+        // MEDDICC tooltip elements
+        const meddiccTooltip = document.getElementById('meddicc-tooltip');
+        const meddiccTooltipHeader = document.getElementById('meddicc-tooltip-header');
+        const meddiccTooltipContent = document.getElementById('meddicc-tooltip-content');
+
+        function showMeddiccTooltip(letter) {
+            const data = meddiccData[letter.dataset.meddicc];
+            if (!data) return;
+            meddiccTooltipHeader.textContent = `${data.letter} — ${data.name}`;
+            meddiccTooltipContent.innerHTML = `<p>${data.summary}</p>`;
+
+            const rect = letter.getBoundingClientRect();
+            let left = rect.right + 10;
+            let top = rect.top;
+
+            meddiccTooltip.style.left = left + 'px';
+            meddiccTooltip.style.top = top + 'px';
+            meddiccTooltip.classList.add('visible');
+
+            requestAnimationFrame(() => {
+                const tooltipRect = meddiccTooltip.getBoundingClientRect();
+                if (left + tooltipRect.width > window.innerWidth - 20) {
+                    left = rect.left - tooltipRect.width - 10;
+                }
+                if (top + tooltipRect.height > window.innerHeight - 20) {
+                    top = window.innerHeight - tooltipRect.height - 20;
+                }
+                if (top < 20) top = 20;
+                meddiccTooltip.style.left = left + 'px';
+                meddiccTooltip.style.top = top + 'px';
+            });
+        }
+
+        function hideMeddiccTooltip() {
+            meddiccTooltip.classList.remove('visible');
+        }
+
+        function openMeddiccPanel(sectionKey) {
+            popup.classList.remove('classification-popup', 'close-process-popup');
+            popup.classList.add('meddicc-popup');
+            popup.querySelector('.popup-header').className = 'popup-header';
+            popupMaturity.style.display = 'none';
+            popupTitle.textContent = 'MEDDICC explained';
+
+            popupContent.innerHTML = Object.entries(meddiccData).map(([key, el]) => `
+                <section class="meddicc-section" id="meddicc-${key}">
+                    <h3 class="meddicc-step"><span class="meddicc-badge">${el.letter}</span>${el.name}</h3>
+                    <p class="meddicc-question">${el.question}</p>
+                    <ul class="meddicc-points">
+                        ${el.points.map(p => `
+                            <li class="meddicc-point">
+                                <span class="meddicc-point-title">${p.title}</span>
+                                <span>${p.text}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </section>
+            `).join('');
+
+            popup.style.left = '50%';
+            popup.style.top = '50%';
+            popup.style.transform = 'translate(-50%, -50%)';
+            popupOverlay.classList.add('active');
+
+            popupContent.scrollTop = 0;
+            if (sectionKey) {
+                document.getElementById(`meddicc-${sectionKey}`).scrollIntoView({ block: 'start' });
+            }
+        }
+
+        document.querySelectorAll('.meddicc-letter').forEach(letter => {
+            letter.addEventListener('mouseenter', () => showMeddiccTooltip(letter));
+            letter.addEventListener('focus', () => showMeddiccTooltip(letter));
+            letter.addEventListener('mouseleave', hideMeddiccTooltip);
+            letter.addEventListener('blur', hideMeddiccTooltip);
+            letter.addEventListener('click', () => {
+                hideMeddiccTooltip();
+                openMeddiccPanel(letter.dataset.meddicc);
+            });
+        });
+
+        document.querySelectorAll('[data-meddicc-explained]').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                openMeddiccPanel();
             });
         });
 
