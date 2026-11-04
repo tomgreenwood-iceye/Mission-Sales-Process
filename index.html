@@ -21,6 +21,7 @@
             /* Accent — Nebula teal (use sparingly, one accent per composition) */
             --iceye-cyan: #52DEC0;              /* teal — light tint fills (dark text) */
             --iceye-cyan-tint-1: #11B7A1;       /* teal on light — accent / win */
+            --iceye-nebula-tint: #C8F0EA;       /* pale teal — light fills (dark text) */
             --iceye-sun: #11B7A1;               /* win stage = single teal accent */
 
             /* Alert — Pulsar (strictly for review gates / alerts) */
@@ -323,6 +324,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             white-space: nowrap;
+            transform: translateY(1.5px);
         }
 
         .close-process-stage-arrow:hover {
@@ -585,7 +587,7 @@
             flex-direction: column;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);
+            translate: -50% -50%;
         }
 
         .popup.close-process-popup .popup-content,
@@ -671,13 +673,6 @@
             font-weight: 500;
         }
 
-        .close-process-intro {
-            font-size: 14px;
-            line-height: 19px;
-            color: var(--iceye-night-black);
-            margin-bottom: 16px;
-        }
-
         .popup-content h3.close-process-step {
             font-family: var(--font-primary);
             font-size: 22px;
@@ -688,6 +683,122 @@
             color: var(--iceye-night-black);
             margin: 24px 0 12px;
         }
+
+        .popup-content h3.close-process-step:first-child {
+            margin-top: 0;
+        }
+
+        .close-process-section {
+            padding: 20px 24px;
+            border-radius: 3px;
+            background: var(--iceye-base);
+        }
+
+        .close-process-step-arrow {
+            padding: 8px 0;
+            text-align: center;
+            color: var(--iceye-night-black-tint-1);
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .close-process-section:nth-of-type(even) {
+            background: var(--iceye-stellar-white);
+            box-shadow: inset 0 0 0 1px rgba(34, 34, 34, 0.1);
+        }
+
+        .close-process-section > :last-child {
+            margin-bottom: 0;
+        }
+
+        .action-item {
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            background: var(--iceye-stellar-white);
+            border-left: 2px solid var(--iceye-cyan-tint-1);
+            border-radius: 3px;
+        }
+
+        .close-process-section:nth-of-type(even) .action-item {
+            background: var(--iceye-base);
+        }
+
+        .action-item-title {
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--iceye-cyan-tint-1);
+            margin-bottom: 10px;
+        }
+
+        .action-item-fields {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .action-item-head {
+            font-family: var(--font-accent);
+            font-size: 8px;
+            line-height: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--iceye-night-black-tint-1);
+            margin-bottom: 4px;
+        }
+
+        .action-item-row {
+            padding: 6px 0;
+            font-size: 14px;
+            line-height: 19px;
+            color: var(--iceye-night-black);
+        }
+
+        .action-item-action {
+            font-weight: 600;
+        }
+
+        .action-item-row + .action-item-row {
+            border-top: 1px solid rgba(34, 34, 34, 0.1);
+        }
+
+        .action-item-row:last-child {
+            padding-bottom: 0;
+        }
+
+        .raci-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0 0 14px;
+            padding: 0;
+        }
+
+        .raci-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            line-height: 16px;
+            color: var(--iceye-night-black);
+            cursor: help;
+        }
+
+        .raci-letter {
+            font-family: var(--font-accent);
+            font-size: 11px;
+        }
+
+        .raci-r { background: var(--iceye-cyan); }
+        .raci-a { background: var(--iceye-cyan-tint-1); }
+        .raci-c { background: var(--iceye-nebula-tint); }
+        .raci-i { background: var(--iceye-surface-2); }
 
         .close-process-step-intro {
             font-size: 14px;
@@ -754,14 +865,19 @@
             vertical-align: top;
         }
 
-        .close-process-table tr:last-child td {
-            border-bottom: none;
-        }
-
         .close-process-table .col-category {
-            width: 22%;
+            width: 30%;
             font-weight: 500;
             vertical-align: top;
+        }
+
+        .close-process-table .col-category-note {
+            display: block;
+            margin-top: 2px;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 400;
+            color: var(--iceye-night-black-tint-1);
         }
 
         .close-process-table tr.category-start td {
@@ -774,15 +890,6 @@
 
         .close-process-table .col-role {
             width: 34%;
-        }
-
-        .close-process-table .col-timing {
-            width: 22%;
-            color: var(--iceye-night-black-tint-1);
-            font-family: var(--font-accent);
-            font-size: 11px;
-            line-height: 14px;
-            letter-spacing: 0.3px;
         }
 
         .close-process-table .col-gantt {
@@ -801,7 +908,7 @@
             width: 40%;
         }
 
-        /* Step 3 countdown Gantt — weeks relative to contract signature */
+        /* Closure timeline countdown Gantt — weeks relative to contract signature */
         .gantt-axis {
             position: relative;
             height: 22px;
@@ -1503,24 +1610,24 @@
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
                         <div class="stage" data-maturity="45" data-stage="rfp-submitted" data-phase="2">
-                            <div class="stage-bar">
-                                RFP submitted
-                                <span class="maturity-badge">45%</span>
+                            <div class="stage-with-arrow">
+                                <div class="stage-bar">
+                                    RFP submitted
+                                    <span class="maturity-badge">45%</span>
+                                </div>
+                                <button type="button" class="close-process-stage-arrow" data-close-process aria-label="Open Missions Close Process">
+                                    <span class="close-process-stage-arrow-icon">→</span>
+                                    <span class="close-process-stage-arrow-label">Close process</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="stage-arrow">↓</div>
                     <div class="stage-row">
                         <div class="stage" data-maturity="60" data-stage="iceye-selected" data-phase="2">
-                            <div class="stage-with-arrow">
-                                <div class="stage-bar">
-                                    ICEYE selected
-                                    <span class="maturity-badge">60%</span>
-                                </div>
-                                <button type="button" class="close-process-stage-arrow" data-close-process aria-label="Open Missions Close Process">
-                                    <span class="close-process-stage-arrow-icon">→</span>
-                                    <span class="close-process-stage-arrow-label">Close process</span>
-                                </button>
+                            <div class="stage-bar">
+                                ICEYE selected
+                                <span class="maturity-badge">60%</span>
                             </div>
                         </div>
                     </div>
@@ -1531,11 +1638,11 @@
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ Use this time to align with support functions to secure their time and plan in some time for negotiations. (E.g. Legal, Finance, Program Management)</span>
+                        <span class="stage-action">→ <strong>Close process needs to kick off now.</strong> Close captains (Sales and Programs) are accountable for execution. <a href="#" class="close-process-trigger" data-close-process>Full process here</a>.</span>
                     </div>
                     <div class="link-spacer"></div>
                     <div class="link-row">
-                        <span class="stage-action">→ <a href="#" class="close-process-trigger" data-close-process><strong>Sales director is responsible for triggering the close process.</strong></a> This must be done as soon as we learn that ICEYE was selected.</span>
+                        <span class="stage-action">→ <a href="#" class="close-process-trigger" data-close-process><strong>The close process should already be running by now.</strong></a></span>
                     </div>
                 </div>
                 <div class="meddicc-column"></div>
@@ -1786,29 +1893,48 @@
 
         const closeProcessData = {
             title: 'Missions Close Process',
-            intro: 'The close process is triggered when a deal reaches the \'ICEYE Selected\' stage of the sales process. The sales director/manager is responsible for following the steps outlined here to drive the deal towards a swift closure. Each mission is unique, but by following this proven standardised approach, we can shrink the negotiations from a long drawn-out process to a concise well-planned win.',
+            raci: {
+                captains: { R: 'Sales Director', A: 'Commercial Operations', C: 'Programs', I: 'LoB + Support functions' },
+                teamRoles: { R: 'Close Captains', A: 'Sales Director', C: 'MLT, Close team', I: 'Commercial Operations' },
+                coordination: { R: 'Close Captains', A: 'Sales Director', C: 'MLT, Close team', I: 'Commercial Operations' },
+                timeline: { R: 'Close Captains', A: 'Sales Director', C: 'MLT, Close team', I: 'Commercial Operations' }
+            },
+            actionItems: {
+                captains: [
+                    { action: 'Name close captains in the relevant fields in the deal in Salesforce.', owner: 'Sales Director', deadline: '&lt;24h after RFP submitted' },
+                    { action: 'Select the \'Close process started\' box in Salesforce', owner: 'Sales Director', deadline: '&lt;24h after RFP submitted' }
+                ],
+                teamRoles: [
+                    { action: 'Nominate close team (with appropriate security clearances)', owner: 'Close captains (Jointly)', deadline: '&lt;1 week after RFP submitted' },
+                    { action: 'Document the close team and share with stakeholders (MLT)', owner: 'Close captains (Jointly)', deadline: '&lt;1 week after RFP submitted' }
+                ],
+                coordination: [
+                    { action: 'Set up Google Drive (shared with all close team members for nego docs)', owner: 'Close captains', deadline: '&lt;24h after Step 2' },
+                    { action: 'Set up Slack Channel (including all close team members + Consulted + Informed)', owner: 'Close captains', deadline: '&lt;24h after Step 2' },
+                    { action: 'Organize internal kick-off meeting', owner: 'Close captains', deadline: 'As soon as \'ICEYE is selected\' as winner' },
+                    { action: 'Set up internal close meeting cadence', owner: 'Close captains', deadline: 'As soon as \'ICEYE is selected\' as winner' }
+                ],
+                timeline: [
+                    { action: 'Plan the deal-specific closure timeline', owner: 'Close captains (Jointly)', deadline: 'ASAP after 3.3 (Internal kick-off)' }
+                ]
+            },
             rules: [
                 'ICEYE activities should always be turned around within 48 hours',
                 'ICEYE is never the organization to slow down the process',
-                'The Close DRI is the owner of the process and is overall responsible for maintaining seamless coordination and communication among the close team.'
+                'The Close captains are the owners of the process and are overall responsible for maintaining seamless coordination and communication among the close team.'
             ],
             roles: [
-                { category: 'Close DRI', role: 'Directly responsible for driving the coordination of the closure', who: 'Sales Lead or Program Manager' },
-                { category: 'Coordinators', role: 'Sales Lead', who: 'Sales Director / Manager' },
-                { category: 'Coordinators', role: 'Program/Delivery Lead', who: 'Program Manager' },
+                { category: 'Close captains', role: 'Commercial close captain', who: 'Sales Director / Manager' },
+                { category: 'Close captains', role: 'Technical close captain', who: 'Program Manager' },
+                { category: 'Close captains', role: '(Bid Manager)', who: 'Case dependent' },
+                { category: 'Contributors', role: 'Local Leadership', who: 'Country CEO' },
                 { category: 'Contributors', role: 'Legal Lead', who: 'Associate General Counsel (Commercial)' },
                 { category: 'Contributors', role: 'Finance Lead', who: 'VP Finance / LoB Finance Partner' },
                 { category: 'Contributors', role: 'Sales Engineering Lead', who: 'Sales Engineering' },
-                { category: 'Contributors', role: 'Product Lead', who: 'Product Management (as needed)' },
+                { category: 'Contributors', role: 'Product Lead', who: 'Product Director (as needed)' },
                 { category: 'Contributors', role: 'Engineering Lead', who: 'Engineering (as needed)' },
-                { category: 'Approvers', role: 'Commercial Approver', who: 'Head of Missions Commercial' },
-                { category: 'Approvers', role: 'Technical Approver', who: 'Head of Missions LoB' }
-            ],
-            step2Steps: [
-                { action: '2.1 Set up Google Drive', timing: '<24h after ICEYE Selected', owner: 'Close DRI' },
-                { action: '2.2 Set up Slack Channel', timing: '<24h after ICEYE Selected', owner: 'Close DRI' },
-                { action: '2.3 Organize internal kick-off meeting', timing: '<72h after ICEYE Selected', owner: 'Close DRI' },
-                { action: '2.4 Set up internal close meeting cadence', timing: '<72h after ICEYE Selected', owner: 'Close DRI' }
+                { category: 'Contributors', role: 'Security', who: 'Missions Security Lead (as needed)' },
+                { category: 'Contributors', role: 'Others / Subject Matter Experts', who: 'Case dependent (as needed)' }
             ],
             // Gantt domain: weeks relative to signature (−10 → +1.5)
             ganttDomain: { min: -10, max: 1.5 },
@@ -1820,63 +1946,63 @@
                 { at: 0, label: 'T=0', signature: true },
                 { at: 1, label: 'Post' }
             ],
-            step3Steps: [
+            timelineSteps: [
                 {
-                    action: '3.1 Define Heads of Terms (HOT) with customer (scope, requirements and pricing)',
-                    owner: 'Close DRI',
+                    action: 'Define Heads of Terms (HOT) with customer (scope, requirements and pricing)',
+                    owner: 'Close captains',
                     label: '4-week period from signature minus 10 weeks to minus 6 weeks',
                     gantt: { type: 'span', from: -10, to: -6 }
                 },
                 {
-                    action: '3.2 Agree Heads of Terms (HOT)',
-                    owner: 'Close DRI',
+                    action: 'Agree Heads of Terms (HOT)',
+                    owner: 'Close captains',
                     label: 'Signature minus 6 weeks',
                     gantt: { type: 'point', at: -6 }
                 },
                 {
-                    action: '3.3 Schedule customer negotiation meetings',
-                    owner: 'Close DRI',
+                    action: 'Schedule customer negotiation meetings',
+                    owner: 'Close captains',
                     label: '1-week block at signature minus 8 weeks',
                     gantt: { type: 'span', from: -8, to: -7 }
                 },
                 {
-                    action: '3.4 Customer negotiation meeting KO',
-                    owner: 'Close DRI',
+                    action: 'Customer negotiation meeting KO',
+                    owner: 'Close captains',
                     label: 'Signature minus 6 weeks',
                     gantt: { type: 'point', at: -6 }
                 },
                 {
-                    action: '3.5 Subsequent customer negotiation meeting(s)',
-                    owner: 'Close DRI',
+                    action: 'Subsequent customer negotiation meeting(s)',
+                    owner: 'Close captains',
                     label: 'Six weekly meetings from signature minus 6 weeks to closure',
                     gantt: { type: 'points', at: [-6, -5, -4, -3, -2, -1] }
                 },
                 {
-                    action: '3.6 Align with and inform additional ICEYE teams',
-                    owner: 'Close DRI',
+                    action: 'Align with and inform additional ICEYE teams',
+                    owner: 'Close captains',
                     label: 'Weekly from signature minus 6 weeks to closure',
                     gantt: { type: 'span', from: -6, to: 0 }
                 },
                 {
-                    action: '3.7 Populate contract summary and approval sheet',
+                    action: 'Populate contract summary and approval sheet',
                     owner: 'Legal',
                     label: 'Signature minus 1 week',
                     gantt: { type: 'point', at: -1 }
                 },
                 {
-                    action: '3.8 Exchange contracts and sign',
+                    action: 'Exchange contracts and sign',
                     owner: 'Legal',
                     label: '1-week block ending at T=0',
                     gantt: { type: 'span', from: -1, to: 0 }
                 },
                 {
-                    action: '3.9 Contract signature ceremony',
+                    action: 'Contract signature ceremony',
                     owner: 'ICEYE and Customer signatories',
                     label: 'T=0 Contract signature ceremony',
                     gantt: { type: 'point', at: 0, marker: 'signature' }
                 },
                 {
-                    action: '3.10 Internal program kickoff',
+                    action: 'Internal program kickoff',
                     owner: 'Program Manager',
                     label: 'Post signature',
                     gantt: { type: 'point', at: 1, marker: 'post' }
@@ -2188,13 +2314,39 @@
                 `).join('')
             ).join('');
 
-            const renderStepsRows = (steps) => steps.map(s => `
-                <tr>
-                    <td>${s.action}</td>
-                    <td class="col-timing">${s.timing}</td>
-                    <td class="col-owner">${s.owner}</td>
-                </tr>
-            `).join('');
+            const raciNames = { R: 'Responsible', A: 'Accountable', C: 'Consulted', I: 'Informed' };
+            const renderRaciList = (values) => `
+                <ul class="raci-list" aria-label="RACI">
+                    ${Object.entries(values).map(([letter, value]) => `
+                        <li class="raci-item raci-${letter.toLowerCase()}" title="${raciNames[letter]}">
+                            <span class="raci-letter">${letter}</span>
+                            <span>${value}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            `;
+            const renderRaci = (step) => renderRaciList(closeProcessData.raci[step]);
+
+            const renderActionItems = (step, stepNumber) => {
+                const items = closeProcessData.actionItems[step];
+                return `
+                    <div class="action-item">
+                        <div class="action-item-title">${items.length > 1 ? 'Action items' : 'Action item'}</div>
+                        <div class="action-item-fields action-item-head">
+                            <span>Action</span>
+                            <span>Owner</span>
+                            <span>Deadline</span>
+                        </div>
+                        ${items.map((item, i) => `
+                            <div class="action-item-fields action-item-row">
+                                <span class="action-item-action">${stepNumber}.${i + 1} ${item.action}</span>
+                                <span>${item.owner}</span>
+                                <span>${item.deadline}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            };
 
             const ganttPct = (week) => {
                 const { min, max } = closeProcessData.ganttDomain;
@@ -2236,7 +2388,7 @@
                 `;
             };
 
-            const renderStep3GanttRows = (steps) => steps.map(s => `
+            const renderTimelineGanttRows = (steps) => steps.map(s => `
                 <tr>
                     <td class="col-action">${s.action}</td>
                     ${renderGanttCell(s)}
@@ -2244,57 +2396,91 @@
                 </tr>
             `).join('');
 
-            const step2Rows = renderStepsRows(closeProcessData.step2Steps);
-            const step3Rows = renderStep3GanttRows(closeProcessData.step3Steps);
+            const timelineRows = renderTimelineGanttRows(closeProcessData.timelineSteps);
 
             popupContent.innerHTML = `
-                <p class="close-process-intro">${closeProcessData.intro}</p>
-                <h3 class="close-process-step">Step 1 — Assign close team roles</h3>
-                <p class="close-process-step-intro">The first activity is to assign the close team. The Sales leader, in very close coordination with the Program Manager, should assign an individual to each of the roles below, ensuring that the nominated person(s) meet the relevant security clearances for the individual deal.</p>
-                <table class="close-process-table">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Role</th>
-                            <th>Who</th>
-                        </tr>
-                    </thead>
-                    <tbody>${rolesRows}</tbody>
-                </table>
-                <h3 class="close-process-step">Step 2 — Coordinate internally</h3>
-                <table class="close-process-table">
-                    <thead>
-                        <tr>
-                            <th>Action</th>
-                            <th>Timing</th>
-                            <th>Owner</th>
-                        </tr>
-                    </thead>
-                    <tbody>${step2Rows}</tbody>
-                </table>
-                <h3 class="close-process-step">Step 3 — Plan the closure timeline</h3>
-                <table class="close-process-table gantt-table">
-                    <thead>
-                        <tr>
-                            <th class="col-action">Action</th>
-                            <th class="col-gantt">
-                                Timeline to signature
-                                ${renderGanttAxis()}
-                            </th>
-                            <th>Owner</th>
-                        </tr>
-                    </thead>
-                    <tbody>${step3Rows}</tbody>
-                </table>
+                <section class="close-process-section">
+                    <h3 class="close-process-step">Step 1 — Assign close captains</h3>
+                    ${renderRaci('captains')}
+                    <p class="close-process-step-intro">Every deal has at least two close captains. Complex deals also have a third close captain.</p>
+                    <table class="close-process-table">
+                        <thead>
+                            <tr>
+                                <th>Deal type</th>
+                                <th>Close captain</th>
+                                <th>Who</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="category-start">
+                                <td class="col-category" rowspan="2">Every deal</td>
+                                <td class="col-role">Commercial</td>
+                                <td>Sales lead</td>
+                            </tr>
+                            <tr>
+                                <td class="col-role">Technical</td>
+                                <td>Program lead</td>
+                            </tr>
+                            <tr class="category-start">
+                                <td class="col-category">Complex deals <span class="col-category-note">(e.g. European Space Agency or similar)</span></td>
+                                <td class="col-role">Bid Manager</td>
+                                <td>Case dependent</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    ${renderActionItems('captains', 1)}
+                </section>
+                <div class="close-process-step-arrow" aria-hidden="true">↓</div>
+                <section class="close-process-section">
+                    <h3 class="close-process-step">Step 2 — Assign close team</h3>
+                    ${renderRaci('teamRoles')}                    <table class="close-process-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Role</th>
+                                <th>Who</th>
+                            </tr>
+                        </thead>
+                        <tbody>${rolesRows}</tbody>
+                    </table>
+                    ${renderActionItems('teamRoles', 2)}
+                </section>
+                <div class="close-process-step-arrow" aria-hidden="true">↓</div>
+                <section class="close-process-section">
+                    <h3 class="close-process-step">Step 3 — Coordinate internally</h3>
+                    ${renderRaci('coordination')}
+                    ${renderActionItems('coordination', 3)}
+                </section>
+                <div class="close-process-step-arrow" aria-hidden="true">↓</div>
+                <section class="close-process-section">
+                    <h3 class="close-process-step">Step 4 — Plan the closure timeline</h3>
+                    ${renderRaci('timeline')}
+                    <p class="close-process-step-intro">The deal-closure timeline should be planned now. It should be achievable and realistic, but we should push as fast as is practical. Below is an example.</p>
+                    <table class="close-process-table gantt-table">
+                        <thead>
+                            <tr>
+                                <th class="col-action">Action</th>
+                                <th class="col-gantt">
+                                    Timeline to signature
+                                    ${renderGanttAxis()}
+                                </th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>${timelineRows}</tbody>
+                    </table>
+                    ${renderActionItems('timeline', 4)}
+                </section>
                 <h3 class="close-process-step">Key things to remember</h3>
                 <ul class="close-process-rules">
                     ${closeProcessData.rules.map(rule => `<li class="close-process-rule">${rule}</li>`).join('')}
                 </ul>
+                <h3 class="close-process-step">RACI</h3>
+                ${renderRaciList(raciNames)}
             `;
 
             popup.style.left = '50%';
             popup.style.top = '50%';
-            popup.style.transform = 'translate(-50%, -50%)';
             popupOverlay.classList.add('active');
         }
 
@@ -2367,7 +2553,6 @@
 
             popup.style.left = '50%';
             popup.style.top = '50%';
-            popup.style.transform = 'translate(-50%, -50%)';
             popupOverlay.classList.add('active');
 
             popupContent.scrollTop = 0;
