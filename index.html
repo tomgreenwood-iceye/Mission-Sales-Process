@@ -2294,12 +2294,25 @@
             classificationTooltip.classList.remove('visible');
         }
 
+        // Shareable links: each popup writes its hash to the address bar, so the URL can be copied
+        const CLOSE_PROCESS_LINK = '#close-process';
+        const MEDDICC_LINK = '#meddicc';
+
+        function setPopupLink(link) {
+            history.replaceState(null, '', link);
+        }
+
+        function clearPopupLink() {
+            history.replaceState(null, '', location.pathname + location.search);
+        }
+
         function closePopup() {
             popupOverlay.classList.remove('active');
             popup.classList.remove('close-process-popup', 'classification-popup', 'meddicc-popup');
             popup.style.left = '';
             popup.style.top = '';
             popup.style.transform = '';
+            clearPopupLink();
         }
 
         function openCloseProcessPanel() {
@@ -2502,6 +2515,8 @@
             popup.style.left = '50%';
             popup.style.top = '50%';
             popupOverlay.classList.add('active');
+            popupContent.scrollTop = 0;
+            setPopupLink(CLOSE_PROCESS_LINK);
         }
 
         document.querySelectorAll('[data-close-process]').forEach(trigger => {
@@ -2579,6 +2594,7 @@
             if (sectionKey) {
                 document.getElementById(`meddicc-${sectionKey}`).scrollIntoView({ block: 'start' });
             }
+            setPopupLink(sectionKey ? `${MEDDICC_LINK}-${sectionKey}` : MEDDICC_LINK);
         }
 
         document.querySelectorAll('.meddicc-letter').forEach(letter => {
@@ -2602,6 +2618,21 @@
         popupClose.addEventListener('click', closePopup);
         popupOverlay.addEventListener('click', (e) => { if (e.target === popupOverlay) closePopup(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePopup(); });
+
+        function openPopupFromLink() {
+            const link = location.hash;
+            if (link === CLOSE_PROCESS_LINK) {
+                openCloseProcessPanel();
+            } else if (link === MEDDICC_LINK) {
+                openMeddiccPanel();
+            } else if (link.startsWith(`${MEDDICC_LINK}-`)) {
+                const sectionKey = link.slice(MEDDICC_LINK.length + 1);
+                if (meddiccData[sectionKey]) openMeddiccPanel(sectionKey);
+            }
+        }
+
+        openPopupFromLink();
+        window.addEventListener('hashchange', openPopupFromLink);
     </script>
 </body>
 </html>
